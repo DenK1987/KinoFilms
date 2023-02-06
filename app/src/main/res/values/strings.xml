@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">KinoFilms</string>
+    <string name="catalog">Каталог</string>
+    <string name="recommendations">Рекомендации</string>
+    <string name="search">Поиск</string>
+    <string name="profile">Профиль</string>
+    <string name="title">Title</string>
+    <string name="movies">Фильмы</string>
+    <string name="serials">Сериалы</string>
+    <string name="cartoons">Мультфильмы</string>
+    <string name="marvel">Marvel</string>
+    <string name="dc">DC</string>
+    <string name="name_movie">Название фильма</string>
+    <string name="default_rating">0.0</string>
+    <string name="default_release_year">0000</string>
+</resources>

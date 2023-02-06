@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/page_fragment">
+
+    <fragment
+        android:id="@+id/page_fragment"
+        android:name="com.kinofilms.ui.catalog.viewpager.PageFragment"
+        android:label="PageFragment"
+        tools:layout="@layout/fragment_tab" />
+    <fragment
+        android:id="@+id/recommendations_fragment"
+        android:name="com.kinofilms.ui.recommendations.RecommendationsFragment"
+        android:label="RecommendationsFragment"
+        tools:layout="@layout/fragment_recommendations" />
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.kinofilms.ui.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.kinofilms.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>
