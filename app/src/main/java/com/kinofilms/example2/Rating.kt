@@ -1,7 +1,7 @@
 package com.kinofilms.example2
 
 data class Rating(
-    val imdb: Double,
-    val kp: Double,
-    val tmdb: Double
+    val imdb: Int,
+    val kp: Int,
+    val tmdb: Int
 )

@@ -5,22 +5,21 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.kinofilms.R
 import com.kinofilms.databinding.FragmentCatalogBinding
 import com.kinofilms.models.Movie
 import com.kinofilms.ui.catalog.adapter.MoviesAdapter
-import com.kinofilms.ui.catalog.viewpager.ViewPagerAdapter
+import com.kinofilms.ui.catalog.viewpager.PageFragmentDirections
+import com.kinofilms.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-
-private const val ID_FRAGMENT = "id_fragment"
 
 @AndroidEntryPoint
 class CatalogFragment : Fragment() {
@@ -38,18 +37,10 @@ class CatalogFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.toolbarCustom.apply {
-//            toolbarTitle.text = getString(R.string.catalog)
-//            toolbarButton.visibility = View.VISIBLE
-//            toolbarButton.setImageResource(R.drawable.ic_baseline_tune_24)
-//        }
         arguments?.getInt(ID_FRAGMENT)?.let {
-            binding.text.text = it.toString()
-//            viewModel.getCatalogMovies(it)
             viewModel.setId(it)
         }
 
@@ -58,12 +49,9 @@ class CatalogFragment : Fragment() {
                 Log.e("KEK", result.toString())
                 if (result.error.isEmpty())
                     initCatalogMovies(result.data ?: emptyList())
-                else Toast.makeText(requireContext(), result.error, Toast.LENGTH_SHORT).show()
+                else toast(result.error)
             }
-
         }
-
-
     }
 
     private fun initCatalogMovies(list: List<Movie>) {
@@ -74,6 +62,22 @@ class CatalogFragment : Fragment() {
 //                        parentFragmentManager,
 //                        HeroFragment.newInstance(it.id.toString())
 //                    )
+                    findNavController().navigate(
+                        PageFragmentDirections.actionPageFragmentToMovieFragment(
+                            it.id.toString(),
+                            it.name,
+                            it.imageUrl,
+                            it.year,
+                            it.ratingKp,
+                            it.ratingImdb,
+                            it.ratingTmdb,
+                            it.movieLength.toString(),
+                            it.description,
+                            it.worldPremiere
+//                            it.genres.toString(),
+//                            it.countries.toString()
+                        )
+                    )
                 }
                 layoutManager = GridLayoutManager(requireContext(), 2)
             }
@@ -82,6 +86,8 @@ class CatalogFragment : Fragment() {
     }
 
     companion object {
+        private const val ID_FRAGMENT = "id_fragment"
+
         fun newInstance(id: Int): CatalogFragment {
             return CatalogFragment().apply {
                 arguments = bundleOf(

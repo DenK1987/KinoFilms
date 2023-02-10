@@ -9,7 +9,7 @@
     </style>
 
     <style name="ImageButtonToolbar">
-        <item name="android:background">@color/color_app_bottom_toolbar</item>
+        <item name="android:background">@null</item>
         <item name="android:tint">@color/white</item>
         <item name="android:padding">@dimen/dp_16</item>
     </style>
@@ -26,8 +26,6 @@
         <item name="colorControlNormal">@color/color_app_blue</item>
         <item name="colorControlActivated">@color/color_app_blue</item>
     </style>
-
-
 
 
 </resources>

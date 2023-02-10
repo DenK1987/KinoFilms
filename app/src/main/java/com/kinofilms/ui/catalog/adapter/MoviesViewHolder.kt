@@ -16,8 +16,8 @@ class MoviesViewHolder(
             Glide.with(imageMovie)
                 .load(movie.imageUrl)
                 .into(imageMovie)
-            textReleaseYear.text = movie.year.toString()
-            textRating.text = movie.rating.toString()
+            textReleaseYear.text = movie.year
+            textRating.text = movie.ratingKp
         }
     }
 }

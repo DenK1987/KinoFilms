@@ -12,5 +12,6 @@
     <color name="color_text_unchecked">#90A6B4</color>
     <color name="color_app_fragment">#2B363C</color>
     <color name="color_app_blue">#39B9FF</color>
+    <color name="color_transparent">#0039B9FF</color>
 
 </resources>

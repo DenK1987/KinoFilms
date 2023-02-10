@@ -23,34 +23,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/CustomTextAppearanceTab"
-        app:tabTextColor="@color/color_text_unchecked">
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/movies" />-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/serials" />-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/cartoons" />-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/marvel" />-->
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/dc" />-->
-
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="@color/color_text_unchecked" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"

@@ -13,4 +13,18 @@
     <string name="name_movie">Название фильма</string>
     <string name="default_rating">0.0</string>
     <string name="default_release_year">0000</string>
+    <string name="kinopoisk">КиноПоиск</string>
+    <string name="imdb">IMDB</string>
+    <string name="tmdb">TMDB</string>
+    <string name="genre_movie">Жанр фильма</string>
+    <string name="country">Страна</string>
+    <string name="duration">Продолжительность</string>
+    <string name="director">Режиссер</string>
+    <string name="name_director">Имя режиссера</string>
+    <string name="premiere">Премьера</string>
+    <string name="date_premiere_and_country">Дата премьеры и страна</string>
+    <string name="description">Описание</string>
+    <string name="trailers">Трейлеры</string>
+    <string name="actors">Актеры</string>
+    <string name="name_actor">Имя актера</string>
 </resources>

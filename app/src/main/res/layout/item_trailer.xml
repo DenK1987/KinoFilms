@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/dp_8"
+    android:layout_marginEnd="@dimen/dp_16"
+    tools:background="@color/color_app_fragment">
+
+
+    <VideoView
+        android:id="@+id/trailer_movie"
+        android:layout_width="@dimen/dp_220"
+        android:layout_height="@dimen/dp_120"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_actor"
+        android:layout_width="@dimen/dp_220"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trailer_movie"
+        tools:text="Name trailer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
