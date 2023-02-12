@@ -10,10 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kinofilms.databinding.FragmentCatalogBinding
-import com.kinofilms.models.Movie
+import com.kinofilms.models.MovieCatalog
 import com.kinofilms.ui.catalog.adapter.MoviesAdapter
 import com.kinofilms.ui.catalog.viewpager.PageFragmentDirections
 import com.kinofilms.utils.toast
@@ -54,7 +53,7 @@ class CatalogFragment : Fragment() {
         }
     }
 
-    private fun initCatalogMovies(list: List<Movie>) {
+    private fun initCatalogMovies(list: List<MovieCatalog>) {
         binding.catalogMovies.run {
             if (adapter == null) {
                 adapter = MoviesAdapter {
@@ -64,16 +63,16 @@ class CatalogFragment : Fragment() {
 //                    )
                     findNavController().navigate(
                         PageFragmentDirections.actionPageFragmentToMovieFragment(
-                            it.id.toString(),
-                            it.name,
-                            it.imageUrl,
-                            it.year,
-                            it.ratingKp,
-                            it.ratingImdb,
-                            it.ratingTmdb,
-                            it.movieLength.toString(),
-                            it.description,
-                            it.worldPremiere
+                            it.id.toString()
+//                            it.name,
+//                            it.imageUrl,
+//                            it.year,
+//                            it.ratingKp,
+//                            it.ratingImdb,
+//                            it.ratingTmdb,
+//                            it.movieLength.toString(),
+//                            it.description,
+//                            it.worldPremiere
 //                            it.genres.toString(),
 //                            it.countries.toString()
                         )

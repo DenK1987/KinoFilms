@@ -1,4 +1,4 @@
-package com.kinofilms.ui.movie
+package com.kinofilms.ui.listactors
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieViewModel @Inject constructor(
+class ListActorsViewModell @Inject constructor(
     private val repository: KinopoiskRepository
 ) : ViewModel() {
 
@@ -22,7 +22,6 @@ class MovieViewModel @Inject constructor(
 
     fun getInfoMovie(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-//            Log.e("KEK", "MovieViewModel $id")
             val response = repository.getMovie(id)
             if (response.isSuccessful) {
                 _movie.postValue((response.body()?.toMovie()))
@@ -31,5 +30,4 @@ class MovieViewModel @Inject constructor(
             }
         }
     }
-
 }

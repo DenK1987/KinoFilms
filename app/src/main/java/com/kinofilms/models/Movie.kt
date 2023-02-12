@@ -6,16 +6,17 @@ data class Movie(
     val year: String,
     val ratingKp: String,
     val ratingImdb: String,
-    val ratingTmdb: String,
-    val imageUrl: String,
+//    val ratingTmdb: String,
+    val imageBackdropUrl: String,
     val description: String,
     val movieLength: Int,
-    val imageUrlBackdrop: String,
     val genres: List<String>,
     val countries: List<String>,
     val worldPremiere: String,
+    val premiereInRussia: String,
 //    val trailers: List<Trailer>,
-//    val persons: List<Person>,
+    val actors: List<Person>,
+    val filmCrew: List<Person>,
     val errorMessage: String
 )
 
@@ -25,10 +26,7 @@ data class AllMovies(
 )
 
 data class Trailer(
-//    val _id: String,
     val name: String,
-//    val site: String,
-//    val size: Int,
     val url: String
 )
 

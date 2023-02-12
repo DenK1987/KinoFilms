@@ -1,12 +1,10 @@
 package com.kinofilms.repositories
 
 import android.util.Log
-import com.kinofilms.models.AllMovies
-import com.kinofilms.models.Movie
+import com.kinofilms.models.AllMoviesCatalog
 import com.kinofilms.network.KinopoiskApi
 import com.kinofilms.network.models.MovieResponse
-import com.kinofilms.utils.toListMovies
-import com.kinofilms.utils.toMovie
+import com.kinofilms.utils.toListMoviesCatalog
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -23,77 +21,112 @@ class KinopoiskRepository @Inject constructor(
     private val api: KinopoiskApi
 ) {
 
-    fun getAllMovies(): Flow<AllMovies> {
-        return flow {
-            emit(AllMovies(data = api.getAllMovies().checkError().body()?.docs?.toListMovies()))
-        }.catch { throwable ->
-            when (throwable) {
-                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
-                else -> AllMovies(emptyList(), NULL_ERROR)
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    fun getAllSerials(): Flow<AllMovies> {
-        return flow {
-            emit(AllMovies(data = api.getAllSerials().checkError().body()?.docs?.toListMovies()))
-        }.catch { throwable ->
-            when (throwable) {
-                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
-                else -> AllMovies(emptyList(), NULL_ERROR)
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    fun getAllCartoons(): Flow<AllMovies> {
-        return flow {
-            emit(AllMovies(data = api.getAllCartoons().checkError().body()?.docs?.toListMovies()))
-        }.catch { throwable ->
-            when (throwable) {
-                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
-                else -> AllMovies(emptyList(), NULL_ERROR)
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    fun getAllAnime(): Flow<AllMovies> {
-        return flow {
-            emit(AllMovies(data = api.getAllAnime().checkError().body()?.docs?.toListMovies()))
-        }.catch { throwable ->
-            when (throwable) {
-                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
-                else -> AllMovies(emptyList(), NULL_ERROR)
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    fun getAllAnimatedSeries(): Flow<AllMovies> {
+    fun getAllMovies(page: Int, limit: Int): Flow<AllMoviesCatalog> {
         return flow {
             emit(
-                AllMovies(
-                    data = api.getAllAnimatedSeries().checkError().body()?.docs?.toListMovies()
+                AllMoviesCatalog(
+                    data = api.getAllMovies(page, limit).checkError().body()?.docs?.toListMoviesCatalog()
                 )
             )
         }.catch { throwable ->
             when (throwable) {
-                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
-                else -> AllMovies(emptyList(), NULL_ERROR)
+                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
+                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
             }
         }.flowOn(Dispatchers.IO)
     }
 
-//    fun getMovie(id: Int): Flow<Movie> {
+    fun getAllMovies(): Flow<AllMoviesCatalog> {
+        return flow {
+            emit(
+                AllMoviesCatalog(
+                    data = api.getAllMovies().checkError().body()?.docs?.toListMoviesCatalog()
+                )
+            )
+        }.catch { throwable ->
+            when (throwable) {
+                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
+                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getAllSerials(): Flow<AllMoviesCatalog> {
+        return flow {
+            emit(
+                AllMoviesCatalog(
+                    data = api.getAllSerials().checkError().body()?.docs?.toListMoviesCatalog()
+                )
+            )
+        }.catch { throwable ->
+            when (throwable) {
+                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
+                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getAllCartoons(): Flow<AllMoviesCatalog> {
+        return flow {
+            emit(
+                AllMoviesCatalog(
+                    data = api.getAllCartoons().checkError().body()?.docs?.toListMoviesCatalog()
+                )
+            )
+        }.catch { throwable ->
+            when (throwable) {
+                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
+                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getAllAnime(): Flow<AllMoviesCatalog> {
+        return flow {
+            emit(
+                AllMoviesCatalog(
+                    data = api.getAllAnime().checkError().body()?.docs?.toListMoviesCatalog()
+                )
+            )
+        }.catch { throwable ->
+            when (throwable) {
+                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
+                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getAllAnimatedSeries(): Flow<AllMoviesCatalog> {
+        return flow {
+            emit(
+                AllMoviesCatalog(
+                    data = api.getAllAnimatedSeries().checkError()
+                        .body()?.docs?.toListMoviesCatalog()
+                )
+            )
+        }.catch { throwable ->
+            when (throwable) {
+                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
+                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+//    fun getMovie(id: Int): Flow<Movie?> {
 //        return flow {
-//            emit(Movie(api.getMovie(id).checkError().body()?.id ?: 0))
-//        }
+//            emit(api.getMovie(id).checkError().body()?.toMovie())
+//        }.catch { throwable ->
+//            when (throwable) {
+//                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
+//                else -> AllMovies(emptyList(), NULL_ERROR)
+//            }
+//        }.flowOn(Dispatchers.IO)
 //    }
 
     suspend fun getMovie(id: Int): Response<MovieResponse> {
-        Log.e("KEK", "KinopoiskRepository $id")
+//        Log.e("KEK", "KinopoiskRepository $id")
         return api.getMovie(id)
     }
-
-
 }
 
 fun <T> Response<T>.checkError(): Response<T> {

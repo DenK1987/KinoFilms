@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/bg_button.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/color_cursor.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.226" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/ic_outline_account_circle_24.xml" value="0.226" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/drawable/ic_outline_subscriptions_24.xml" value="0.226" />
@@ -12,6 +15,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/custom_toolbar.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/fragment_catalog.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/fragment_list_actors.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/fragment_movie.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/fragment_page.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/fragment_profile.xml" value="0.3" />
@@ -20,6 +24,7 @@
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/fragment_tab.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/item_actor.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/item_movie.xml" value="0.3" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/item_person.xml" value="0.30085470085470084" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/layout/item_trailer.xml" value="0.3" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/User/AndroidStudioProjects/KinoFilms/app/src/main/res/menu/menu_top_app_bar.xml" value="0.3" />

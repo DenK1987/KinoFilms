@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_app_fragment">
 
     <include
         android:id="@+id/toolbar_custom"
@@ -10,5 +12,153 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/movies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/movies"
+        android:textColor="@color/color_text_unchecked"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_custom" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_favorites_movies"
+        style="@style/Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_10"
+        android:drawableStart="@drawable/ic_baseline_favorite_border_24"
+        android:drawablePadding="@dimen/dp_16"
+        android:drawableTint="@color/white"
+        android:gravity="start|center"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:text="@string/favorites_movies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movies" />
+
+    <TextView
+        android:id="@+id/serials"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/serials"
+        android:textColor="@color/color_text_unchecked"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_favorites_movies" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_favorites_serials"
+        style="@style/Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_10"
+        android:drawableStart="@drawable/ic_baseline_favorite_border_24"
+        android:drawablePadding="@dimen/dp_16"
+        android:drawableTint="@color/white"
+        android:gravity="start|center"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:text="@string/favorites_serials"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/serials" />
+
+    <TextView
+        android:id="@+id/cartoons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/cartoons"
+        android:textColor="@color/color_text_unchecked"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_favorites_serials" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_favorites_cartoons"
+        style="@style/Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_10"
+        android:drawableStart="@drawable/ic_baseline_favorite_border_24"
+        android:drawablePadding="@dimen/dp_16"
+        android:drawableTint="@color/white"
+        android:gravity="start|center"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:text="@string/favorites_cartoons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cartoons" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_30"
+        android:background="@color/color_text_unchecked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_favorites_cartoons" />
+
+    <TextView
+        android:id="@+id/settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_60"
+        android:text="@string/settings"
+        android:textColor="@color/color_text_unchecked"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_favorites_cartoons" />
+
+    <TextView
+        android:id="@+id/support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:autoLink="email"
+        android:linksClickable="true"
+        android:text="Поддержка: denis.klishevich@gmail.com"
+        android:textColor="@color/color_text_unchecked"
+        android:textColorLink="@color/color_app_blue"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settings" />
+
+    <TextView
+        android:id="@+id/version_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_16"
+        android:textColor="@color/color_text_unchecked"
+        android:textColorLink="@color/color_app_blue"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/support"
+        tools:text="@string/version_app" />
+
+    <ImageView
+        android:id="@+id/image_logo_app"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_160"
+        android:layout_marginTop="@dimen/dp_10"
+        android:scaleType="fitXY"
+        android:src="@drawable/kinofilms_logo1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/version_app" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

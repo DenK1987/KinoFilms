@@ -2,41 +2,64 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="@dimen/dp_8"
-    android:layout_marginEnd="@dimen/dp_16"
     tools:background="@color/color_app_fragment">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_actor"
-        android:layout_width="@dimen/dp_60"
-        android:layout_height="@dimen/dp_60"
-        app:cardCornerRadius="@dimen/dp_10"
+    <ImageView
+        android:id="@+id/image_actor"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/color_text_unchecked"
+        android:src="@drawable/kinofilms_logo1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/image_actor"
-            android:layout_width="match_parent"
-            android:background="@color/color_text_unchecked"
-            android:src="@drawable/kinofilms_logo1"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:scaleType="fitXY" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/name_actor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_30"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_18"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/image_actor"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/name_person" />
+
+    <TextView
+        android:id="@+id/en_name_actor"
         android:layout_width="@dimen/dp_120"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_16"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_2"
+        android:textColor="@color/color_text_unchecked"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintStart_toEndOf="@+id/image_actor"
+        app:layout_constraintTop_toBottomOf="@id/name_actor"
+        tools:text="@string/en_name_person" />
+
+    <ImageView
+        android:id="@+id/image_arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_5"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/card_view_actor"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/name_actor" />
+        app:tint="@color/color_app_blue" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/color_text_unchecked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_actor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

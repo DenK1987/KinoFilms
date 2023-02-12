@@ -21,10 +21,21 @@
     <string name="duration">Продолжительность</string>
     <string name="director">Режиссер</string>
     <string name="name_director">Имя режиссера</string>
-    <string name="premiere">Премьера</string>
-    <string name="date_premiere_and_country">Дата премьеры и страна</string>
+    <string name="premiere_in_world">Премьера в мире:</string>
+    <string name="premiere_in_russia">Премьера в России:</string>
+    <string name="date_premiere_in_world">Дата премьеры в мире</string>
+    <string name="date_premiere_in_russia">Дата премьеры в России</string>
     <string name="description">Описание</string>
     <string name="trailers">Трейлеры</string>
     <string name="actors">Актеры</string>
-    <string name="name_actor">Имя актера</string>
+    <string name="voice_actors">Актеры дубляжа</string>
+    <string name="name_person">Имя персоны</string>
+    <string name="en_name_person">Name person</string>
+    <string name="film_crew">Съемочная группа</string>
+    <string name="default_count">00</string>
+    <string name="favorites_movies">Избранные фильмы</string>
+    <string name="favorites_serials">Избранные сериалы</string>
+    <string name="favorites_cartoons">Избранные мультфильмы</string>
+    <string name="settings">Настройки</string>
+    <string name="version_app">Версия приложения:</string>
 </resources>

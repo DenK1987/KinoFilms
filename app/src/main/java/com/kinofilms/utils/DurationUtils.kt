@@ -1,6 +1,5 @@
 package com.kinofilms.utils
 
-import android.util.Log
 import java.math.RoundingMode
 
 fun transformDurationMovie(durationInMinutes: Int): String {
