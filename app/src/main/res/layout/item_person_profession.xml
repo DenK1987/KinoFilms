@@ -13,34 +13,51 @@
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_10"
         android:background="@color/color_text_unchecked"
+        android:scaleType="fitXY"
         android:src="@drawable/kinofilms_logo1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/name_actor"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/dp_0"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
-        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_20"
         android:textColor="@color/white"
         android:textSize="@dimen/sp_18"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/image_arrow_right"
         app:layout_constraintStart_toEndOf="@+id/image_actor"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/name_person" />
 
     <TextView
         android:id="@+id/en_name_actor"
-        android:layout_width="@dimen/dp_120"
+        android:layout_width="@dimen/dp_0"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginHorizontal="@dimen/dp_16"
         android:layout_marginTop="@dimen/dp_2"
         android:textColor="@color/color_text_unchecked"
         android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toStartOf="@id/image_arrow_right"
         app:layout_constraintStart_toEndOf="@+id/image_actor"
         app:layout_constraintTop_toBottomOf="@id/name_actor"
         tools:text="@string/en_name_person" />
+
+    <TextView
+        android:id="@+id/en_profession"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_16"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_14"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/image_arrow_right"
+        app:layout_constraintStart_toEndOf="@+id/image_actor"
+        tools:text="@string/en_profession" />
 
     <ImageView
         android:id="@+id/image_arrow_right"

@@ -8,7 +8,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface KinopoiskApi {
+interface KinoFilmsApi {
 
 //    @GET("/movie")
 //    suspend fun getMovies(
@@ -37,10 +37,19 @@ interface KinopoiskApi {
     @GET("/movie?field=typeNumber&search=5&limit=300&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
     suspend fun getAllAnimatedSeries(): Response<AllMoviesCatalogResponse>
 
-//    @GET("/movie/{id}")
-//    suspend fun getMovie(@Path("id") id: Int): Response<MovieResponse>
-
     @GET("/movie?field=id&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
     suspend fun getMovie(@Query("search") id: Int): Response<MovieResponse>
+
+    @GET("/movie?field=typeNumber&search=1&sortField=votes.imdb&sortType=-1&limit=100&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
+    suspend fun getAllPopularForeignMovies(): Response<AllMoviesCatalogResponse>
+
+    @GET("/movie?field=typeNumber&search=2&sortField=votes.imdb&sortType=-1&limit=100&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
+    suspend fun getAllPopularForeignSerials(): Response<AllMoviesCatalogResponse>
+
+    @GET("/movie?field=typeNumber&search=1&field=countries.name&search=Россия&sortField=votes.kp&sortType=-1&limit=100&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
+    suspend fun getAllPopularRussianMovies(): Response<AllMoviesCatalogResponse>
+
+    @GET("/movie?field=typeNumber&search=2&field=countries.name&search=Россия&sortField=votes.kp&sortType=-1&limit=100&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
+    suspend fun getAllPopularRussianSerials(): Response<AllMoviesCatalogResponse>
 
 }

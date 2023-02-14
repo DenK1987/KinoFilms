@@ -3,9 +3,11 @@ package com.kinofilms.utils
 import com.kinofilms.models.Movie
 import com.kinofilms.models.MovieCatalog
 import com.kinofilms.models.Person
+import com.kinofilms.models.SequelsAndPrequel
 import com.kinofilms.network.models.MovieCatalogResponse
 import com.kinofilms.network.models.MovieResponse
 import com.kinofilms.network.models.PersonResponse
+import com.kinofilms.network.models.SequelsAndPrequelResponse
 
 private const val PROF_ACTOR = "actor"
 private const val PROF_VOICE_ACTOR = "voice_actor"
@@ -15,8 +17,10 @@ fun MovieCatalogResponse.toMovieCatalog(): MovieCatalog {
         id = this.id,
         name = this.name ?: "",
         year = this.year.toString(),
-        ratingKp = String.format("%.1f", this.rating?.kp ?: 0.0).toDouble().toString(),
+        ratingKp = this.rating?.kp ?: 0.0,
         imageUrl = this.poster?.url ?: "",
+        votesKp = this.votes?.kp ?: 0,
+        votesImdb = this.votes?.imdb ?: 0,
         errorMessage = ""
     )
 }
@@ -24,7 +28,7 @@ fun MovieCatalogResponse.toMovieCatalog(): MovieCatalog {
 fun List<MovieCatalogResponse>.toListMoviesCatalog(): List<MovieCatalog> =
     this.map { model -> model.toMovieCatalog() }
         .filter {
-            it.imageUrl.isNotEmpty() && it.name.isNotEmpty() && it.ratingKp.toDouble() != 0.0
+            it.imageUrl.isNotEmpty() && it.name.isNotEmpty() && it.ratingKp != 0.0
         }
 
 fun PersonResponse.toPerson(): Person {
@@ -54,6 +58,19 @@ fun List<PersonResponse>.toListFilmCrew(): List<Person> =
                     && it.enProfession != PROF_VOICE_ACTOR
         }
 
+//fun SequelsAndPrequelResponse.toSequelsAndPrequel(): SequelsAndPrequel {
+//    return SequelsAndPrequel(
+//        _id = this._id ?: "",
+//        alternativeName = this.alternativeName ?: "",
+//        id = this.id ?: 0,
+//        name = this.name ?: "",
+//        type = this.type ?: ""
+//    )
+//}
+//
+//fun List<SequelsAndPrequelResponse>.toListSequelsAndPrequel(): List<SequelsAndPrequel> =
+//    this.map { model -> model.toSequelsAndPrequel() }
+
 fun MovieResponse.toMovie(): Movie {
     val listGenres = mutableListOf<String>()
 
@@ -70,9 +87,10 @@ fun MovieResponse.toMovie(): Movie {
     return Movie(
         id = this.id,
         name = this.name ?: "",
+        alternativeName = this.alternativeName ?: "",
         year = this.year.toString(),
-        ratingKp = String.format("%.1f", this.rating?.kp ?: 0.0).toDouble().toString(),
-        ratingImdb = String.format("%.1f", this.rating?.imdb ?: 0.0).toDouble().toString(),
+        ratingKp = this.rating?.kp ?: 0.0,
+        ratingImdb = this.rating?.imdb ?: 0.0,
 //        ratingTmdb = String.format("%.1f", this.rating?.tmdb ?: 0.0).toDouble().toString(),
         imageBackdropUrl = this.backdrop?.url ?: "",
         description = this.description ?: "",
@@ -83,6 +101,7 @@ fun MovieResponse.toMovie(): Movie {
         premiereInRussia = this.premiere?.russia ?: "",
         actors = persons?.toListActors() ?: emptyList(),
         filmCrew = persons?.toListFilmCrew() ?: emptyList(),
+//        sequelsAndPrequels = sequelsAndPrequels?.toListSequelsAndPrequel() ?: emptyList(),
         errorMessage = ""
     )
 }

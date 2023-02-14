@@ -4,8 +4,10 @@ data class MovieCatalog(
     val id: Int,
     val name: String,
     val year: String,
-    val ratingKp: String,
+    val ratingKp: Double,
     val imageUrl: String,
+    val votesKp: Int,
+    val votesImdb: Int,
     val errorMessage: String
 )
 

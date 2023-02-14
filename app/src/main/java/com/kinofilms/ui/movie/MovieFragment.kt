@@ -5,19 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kinofilms.R
 import com.kinofilms.databinding.FragmentMovieBinding
+import com.kinofilms.models.Movie
+import com.kinofilms.models.MovieCatalog
 import com.kinofilms.models.Person
-import com.kinofilms.ui.catalog.viewpager.PageFragmentDirections
 import com.kinofilms.ui.movie.actorsadapter.ActorsAdapter
 import com.kinofilms.ui.movie.filmcrewadapter.FilmCrewAdapter
+import com.kinofilms.ui.recommendations.RecommendationsFragmentDirections
+import com.kinofilms.ui.recommendations.adapter.MoviesByRecommendationAdapter
 import com.kinofilms.utils.loadUrl
 import com.kinofilms.utils.transformDurationMovie
 import dagger.hilt.android.AndroidEntryPoint
@@ -60,17 +61,23 @@ class MovieFragment : Fragment() {
         viewModel.movie.observe(viewLifecycleOwner) { movie ->
             binding.apply {
                 nameMovie.text = movie.name
+                if (movie.alternativeName.isNotEmpty()) {
+                    alternativeNameMovie.text = movie.alternativeName
+                } else alternativeNameMovie.visibility = View.GONE
+                alternativeNameMovie.text = movie.alternativeName
                 imageMovie.loadUrl(movie.imageBackdropUrl)
                 imageMovie.alpha = 0.7F
                 releaseYear.text = movie.year
-                ratingKp.text = movie.ratingKp
-                ratingImdb.text = movie.ratingImdb
+                ratingKp.text = String.format("%.1f", movie.ratingKp).replace(",", ".")
+                ratingImdb.text = String.format("%.1f", movie.ratingImdb).replace(",", ".")
 //                ratingTmdb.text = movie.ratingTmdb
                 description.text = movie.description
                 description.setOnClickListener {
                     description.maxLines = Int.MAX_VALUE
                 }
-                duration.text = transformDurationMovie(movie.movieLength)
+                if (movie.movieLength != 0) {
+                    duration.text = transformDurationMovie(movie.movieLength)
+                } else duration.visibility = View.GONE
                 country.text = movie.countries.toString()
                     .replace("Country(name=", "")
                     .filter { it != '[' && it != ']' && it != ')' }
@@ -92,9 +99,9 @@ class MovieFragment : Fragment() {
                     premiereinRussia.visibility = View.GONE
                     datePremiereInRussia.visibility = View.GONE
                 }
-                setListActors(movie.actors)
+                initListActors(movie.actors)
                 buttonActors.text = movie.actors.size.toString()
-                setListFilmCrew(movie.filmCrew)
+                initListFilmCrew(movie.filmCrew)
                 buttonFilmCrew.text = movie.filmCrew.size.toString()
             }
         }
@@ -106,22 +113,31 @@ class MovieFragment : Fragment() {
             actors.setOnClickListener {
                 findNavController().navigate(
                     MovieFragmentDirections.actionMovieFragmentToListActorsFragment(
-                        id.toString()
+                        args.idMovie
                     )
                 )
             }
             buttonActors.setOnClickListener {
                 findNavController().navigate(
                     MovieFragmentDirections.actionMovieFragmentToListActorsFragment(
-                        id.toString()
+                        args.idMovie
                     )
                 )
             }
-            filmCrew.setOnClickListener {
 
+            filmCrew.setOnClickListener {
+                findNavController().navigate(
+                    MovieFragmentDirections.actionMovieFragmentToListFilmCrewFragment(
+                        args.idMovie
+                    )
+                )
             }
             buttonFilmCrew.setOnClickListener {
-
+                findNavController().navigate(
+                    MovieFragmentDirections.actionMovieFragmentToListFilmCrewFragment(
+                        args.idMovie
+                    )
+                )
             }
         }
 
@@ -143,7 +159,7 @@ class MovieFragment : Fragment() {
 
     }
 
-    private fun setListActors(list: List<Person>) {
+    private fun initListActors(list: List<Person>) {
         binding.listActors.run {
             if (adapter == null) {
                 adapter = ActorsAdapter()
@@ -153,7 +169,7 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun setListFilmCrew(list: List<Person>) {
+    private fun initListFilmCrew(list: List<Person>) {
         binding.listFilmCrew.run {
             if (adapter == null) {
                 adapter = FilmCrewAdapter()

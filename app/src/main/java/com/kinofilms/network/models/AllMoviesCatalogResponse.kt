@@ -13,6 +13,7 @@ data class MovieCatalogResponse(
     val name: String?,
     val poster: PosterResponse?,
     val rating: RatingResponse?,
+    val votes: VotesResponse?,
     val year: Int?
 )
 
@@ -23,6 +24,10 @@ data class PosterResponse(
 
 data class RatingResponse(
     val imdb: Double?,
-    val kp: Double?,
-    val tmdb: Double?
+    val kp: Double?
+)
+
+data class VotesResponse(
+    val imdb: Int,
+    val kp: Int
 )

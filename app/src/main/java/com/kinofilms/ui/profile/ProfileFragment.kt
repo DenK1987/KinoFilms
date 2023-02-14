@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import com.kinofilms.BuildConfig
 import com.kinofilms.R
 import com.kinofilms.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding

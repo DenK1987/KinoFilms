@@ -1,6 +1,6 @@
 package com.kinofilms.di
 
-import com.kinofilms.network.KinopoiskApi
+import com.kinofilms.network.KinoFilmsApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +17,7 @@ private const val BASE_URL = "https://api.kinopoisk.dev"
 object NetworkModule {
 
     @Provides
-    fun getDisneyHeroesApi(): KinopoiskApi {
+    fun getDisneyHeroesApi(): KinoFilmsApi {
         val retrofit = Retrofit.Builder()
             .client(
                 OkHttpClient.Builder()
@@ -28,6 +28,6 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BASE_URL)
             .build()
-        return retrofit.create(KinopoiskApi::class.java)
+        return retrofit.create(KinoFilmsApi::class.java)
     }
 }
