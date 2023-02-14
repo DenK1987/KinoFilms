@@ -5,17 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kinofilms.R
 import com.kinofilms.databinding.FragmentPageBinding
 import com.kinofilms.ui.catalog.FragmentType.*
 
-class PageFragment : Fragment() {
+class PageFragment : Fragment()  {  //, PopupMenu.OnMenuItemClickListener
 
     private lateinit var binding: FragmentPageBinding
+
+//    private val viewModel: CatalogViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +32,13 @@ class PageFragment : Fragment() {
             toolbarTitle.text = getString(R.string.catalog)
             toolbarButton.visibility = View.VISIBLE
             toolbarButton.setImageResource(R.drawable.ic_baseline_tune_24)
+//            toolbarButton.setImageResource(R.drawable.ic_baseline_filter_list_24)
+//            toolbarButton.setOnClickListener {
+//                PopupMenu(requireContext(), it).apply {
+//                    setOnMenuItemClickListener(this@PageFragment)
+//                    menuInflater.inflate(R.menu.menu_popup_filter_movies, menu)
+//                }.show()
+//            }
         }
 
         val newAdapter = ViewPagerAdapter(this@PageFragment)
@@ -49,4 +55,22 @@ class PageFragment : Fragment() {
             }
         }.attach()
     }
+//
+//    override fun onMenuItemClick(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.filter_by_popularity -> {
+//                viewModel.sortedMoviesByPopularity()
+//                true
+//            }
+//            R.id.filter_by_rating -> {
+//                viewModel.sortedMoviesByRating()
+//                true
+//            }
+//            R.id.filter_by_release_date -> {
+//                viewModel.sortedMoviesByReleaseDate()
+//                true
+//            }
+//            else -> false
+//        }
+//    }
 }

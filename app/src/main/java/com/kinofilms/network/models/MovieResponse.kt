@@ -15,6 +15,9 @@ data class MovieResponse(
     val lists: List<Any>?,
     val movieLength: Int?,
     val name: String?,
+    val alternativeName: String?,
+    val sequelsAndPrequels: List<SequelsAndPrequelResponse>?,
+    val top250: Int?,
     val persons: List<PersonResponse>?,
     val poster: PosterResponse?,
     val premiere: Premiere?,
@@ -26,7 +29,7 @@ data class MovieResponse(
     val status: String?,
     val type: String?,
     val videos: Videos?,
-    val votes: Votes?,
+    val votes: VotesResponse?,
     val year: Int?
 )
 
@@ -68,8 +71,6 @@ data class Premiere(
     val world: String?
 )
 
-data class Votes(val imdb: Int?, val kp: Int?, val tmdb: Int?)
-
 data class ProductionCompany(val name: String?, val previewUrl: String?, val url: String?)
 
 data class SpokenLanguage(val name: String?, val nameEn: String?)
@@ -82,4 +83,12 @@ data class Trailer(
     val size: Int?,
     val type: String?,
     val url: String?
+)
+
+data class SequelsAndPrequelResponse(
+    val _id: String?,
+    val alternativeName: String?,
+    val id: Int?,
+    val name: String?,
+    val type: String?
 )

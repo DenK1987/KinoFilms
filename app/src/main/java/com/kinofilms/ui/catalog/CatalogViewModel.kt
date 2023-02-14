@@ -3,14 +3,14 @@ package com.kinofilms.ui.catalog
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kinofilms.models.AllMoviesCatalog
-import com.kinofilms.repositories.KinopoiskRepository
+import com.kinofilms.repositories.KinoFilmsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
 class CatalogViewModel @Inject constructor(
-    private val repository: KinopoiskRepository
+    private val repository: KinoFilmsRepository
 ) : ViewModel() {
 
     private val _id: MutableStateFlow<Int> = MutableStateFlow(0)
@@ -32,4 +32,16 @@ class CatalogViewModel @Inject constructor(
     fun setId(id: Int) {
         _id.tryEmit(id)
     }
+
+//    fun sortedMoviesByPopularity() {
+//        repository.getAllMoviesSortedByPopularity()
+//    }
+//
+//    fun sortedMoviesByRating() {
+//        repository.getAllMoviesSortedByRating()
+//    }
+//
+//    fun sortedMoviesByReleaseDate() {
+//        repository.getAllMoviesSortedByReleaseDate()
+//    }
 }

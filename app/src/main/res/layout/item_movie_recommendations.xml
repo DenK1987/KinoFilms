@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/dp_10"
+    tools:background="@color/color_app_fragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_movie"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_160"
+        app:cardCornerRadius="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_movie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="fitXY" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/image_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:src="@drawable/ic_baseline_star_outline_24"
+        app:layout_constraintStart_toStartOf="@+id/card_view_movie"
+        app:layout_constraintTop_toBottomOf="@id/card_view_movie"
+        app:tint="@color/color_app_blue" />
+
+    <TextView
+        android:id="@+id/text_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_app_blue"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBottom_toBottomOf="@id/image_star"
+        app:layout_constraintStart_toEndOf="@id/image_star"
+        app:layout_constraintTop_toTopOf="@id/image_star"
+        tools:text="@string/default_rating" />
+
+    <TextView
+        android:id="@+id/text_release_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:textColor="@color/color_text_unchecked"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintBottom_toBottomOf="@id/image_star"
+        app:layout_constraintStart_toEndOf="@id/text_rating"
+        app:layout_constraintTop_toTopOf="@id/image_star"
+        tools:text="@string/default_release_year" />
+
+    <TextView
+        android:id="@+id/text_name_movie"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="@id/card_view_movie"
+        app:layout_constraintStart_toStartOf="@+id/card_view_movie"
+        app:layout_constraintTop_toBottomOf="@id/image_star"
+        tools:text="@string/name_movie" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

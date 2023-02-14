@@ -40,6 +40,7 @@
         android:paddingHorizontal="@dimen/dp_16"
         android:text="@string/favorites_movies"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/movies" />
 
     <TextView
@@ -69,6 +70,7 @@
         android:paddingHorizontal="@dimen/dp_16"
         android:text="@string/favorites_serials"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/serials" />
 
     <TextView
@@ -98,6 +100,7 @@
         android:paddingHorizontal="@dimen/dp_16"
         android:text="@string/favorites_cartoons"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cartoons" />
 
     <View
@@ -130,7 +133,7 @@
         android:layout_marginTop="@dimen/dp_16"
         android:autoLink="email"
         android:linksClickable="true"
-        android:text="Поддержка: denis.klishevich@gmail.com"
+        android:text="@string/support"
         android:textColor="@color/color_text_unchecked"
         android:textColorLink="@color/color_app_blue"
         android:textSize="@dimen/sp_14"

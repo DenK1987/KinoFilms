@@ -1,4 +1,4 @@
-package com.kinofilms.ui.listactors
+package com.kinofilms.ui.listpersons
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kinofilms.R
 import com.kinofilms.databinding.FragmentListActorsBinding
 import com.kinofilms.models.Person
-import com.kinofilms.ui.movie.MovieViewModel
-import com.kinofilms.ui.movie.actorsadapter.ActorsAdapter
-import com.kinofilms.ui.movie.filmcrewadapter.FilmCrewAdapter
+import com.kinofilms.ui.listpersons.adapter.PersonsByProfessionAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +20,7 @@ class ListActorsFragment : Fragment() {
 
     private lateinit var binding: FragmentListActorsBinding
 
-    private val viewModel: MovieViewModel by viewModels()
+    private val viewModel: ListPersonsViewModel by viewModels()
 
     private val args: ListActorsFragmentArgs by navArgs()
 
@@ -46,15 +44,23 @@ class ListActorsFragment : Fragment() {
             toolbarTitle.text = getString(R.string.actors)
         }
 
-        viewModel.movie.observe(viewLifecycleOwner) { movie ->
-            binding.apply {
-                setListActors(movie.actors)
-                setListFilmCrew(movie.filmCrew)
-            }
+        viewModel.listActors.observe(viewLifecycleOwner) { list ->
+            setListActors(list.actors.filter {
+                it.enProfession == getString(R.string.profession_actor)
+            })
         }
-        viewModel.getInfoMovie(args.idMovie.toInt())
+        viewModel.getListActors(args.idMovie.toInt())
 
-
+        viewModel.listVoiceActors.observe(viewLifecycleOwner) { list ->
+            if (list.actors.any {
+                    it.enProfession == getString(R.string.profession_voice_actor)
+                }) {
+                setListVoiceActors(list.actors.filter {
+                    it.enProfession == getString(R.string.profession_voice_actor)
+                })
+            } else binding.voiceActors.visibility = View.GONE
+        }
+        viewModel.getListVoiceActors(args.idMovie.toInt())
 
 
     }
@@ -62,21 +68,21 @@ class ListActorsFragment : Fragment() {
     private fun setListActors(list: List<Person>) {
         binding.listActors.run {
             if (adapter == null) {
-                adapter = ActorsAdapter()
+                adapter = PersonsByProfessionAdapter()
                 layoutManager = LinearLayoutManager(requireContext())
             }
-            (adapter as? ActorsAdapter)?.submitList(list)
+            (adapter as? PersonsByProfessionAdapter)?.submitList(list)
         }
     }
 
-    private fun setListFilmCrew(list: List<Person>) {
+    private fun setListVoiceActors(list: List<Person>) {
         binding.listVoiceActors.run {
             if (adapter == null) {
-                adapter = FilmCrewAdapter()
+                adapter = PersonsByProfessionAdapter()
                 layoutManager =
                     LinearLayoutManager(requireContext())
             }
-            (adapter as? FilmCrewAdapter)?.submitList(list)
+            (adapter as? PersonsByProfessionAdapter)?.submitList(list)
         }
     }
 }

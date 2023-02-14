@@ -11,6 +11,7 @@
     <string name="marvel">Marvel</string>
     <string name="dc">DC</string>
     <string name="name_movie">Название фильма</string>
+    <string name="alternative_name_movie">Альтернативное название фильма</string>
     <string name="default_rating">0.0</string>
     <string name="default_release_year">0000</string>
     <string name="kinopoisk">КиноПоиск</string>
@@ -27,6 +28,7 @@
     <string name="date_premiere_in_russia">Дата премьеры в России</string>
     <string name="description">Описание</string>
     <string name="trailers">Трейлеры</string>
+    <string name="sequels_and_prequels">Сиквелы и приквелы</string>
     <string name="actors">Актеры</string>
     <string name="voice_actors">Актеры дубляжа</string>
     <string name="name_person">Имя персоны</string>
@@ -38,4 +40,15 @@
     <string name="favorites_cartoons">Избранные мультфильмы</string>
     <string name="settings">Настройки</string>
     <string name="version_app">Версия приложения:</string>
+    <string name="filter_by_popularity">По популярности</string>
+    <string name="filter_by_release_date">По дате выхода</string>
+    <string name="filter_by_rating">По рейтингу</string>
+    <string name="support">Поддержка: denis.klishevich@gmail.com</string>
+    <string name="popular_foreign_movies">Популярные зарубежные фильмы</string>
+    <string name="popular_foreign_serials">Популярные зарубежные сериалы</string>
+    <string name="popular_russian_movies">Популярные русские фильмы</string>
+    <string name="popular_russian_serials">Популярные русские сериалы</string>
+    <string name="profession_actor">actor</string>
+    <string name="profession_voice_actor">voice_actor</string>
+    <string name="en_profession">Profession</string>
 </resources>

@@ -44,6 +44,18 @@
             tools:text="@string/name_movie" />
 
         <TextView
+            android:id="@+id/alternative_name_movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/color_text_unchecked"
+            android:textSize="@dimen/sp_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_movie"
+            tools:text="@string/alternative_name_movie" />
+
+        <TextView
             android:id="@+id/release_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +64,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/sp_20"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/name_movie"
+            app:layout_constraintTop_toBottomOf="@id/alternative_name_movie"
             tools:text="@string/default_release_year" />
 
         <TextView
@@ -356,6 +368,30 @@
             app:layout_constraintTop_toBottomOf="@+id/film_crew"
             tools:itemCount="1"
             tools:listitem="@layout/item_person" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/sequels_and_prequels"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginHorizontal="@dimen/dp_16"-->
+        <!--            android:layout_marginTop="@dimen/dp_10"-->
+        <!--            android:text="@string/sequels_and_prequels"-->
+        <!--            android:textColor="@color/white"-->
+        <!--            android:textSize="@dimen/sp_20"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/list_film_crew" />-->
+
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/list_sequels_and_prequels"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/dp_0"-->
+        <!--            android:layout_marginHorizontal="@dimen/dp_5"-->
+        <!--            android:layout_marginTop="@dimen/dp_10"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/sequels_and_prequels"-->
+        <!--            tools:itemCount="1"-->
+        <!--            tools:listitem="@layout/item_movie_recommendations" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
