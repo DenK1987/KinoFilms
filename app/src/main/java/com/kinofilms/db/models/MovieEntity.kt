@@ -1,12 +1,13 @@
-package com.kinofilms.models
+package com.kinofilms.db.models
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.kinofilms.models.Person
 
 @Entity(tableName = "movie_DB")
-data class Movie(
+data class MovieEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     val id: Int,
@@ -20,9 +21,6 @@ data class Movie(
     val ratingKp: Double,
     @ColumnInfo(name = "ratingImdb")
     val ratingImdb: Double,
-//    val ratingTmdb: String,
-    @ColumnInfo(name = "imageUrl")
-    val imageUrl: String,
     @ColumnInfo(name = "imageBackdropUrl")
     val imageBackdropUrl: String,
     @ColumnInfo(name = "description")
@@ -38,41 +36,10 @@ data class Movie(
     val worldPremiere: String,
     @ColumnInfo(name = "premiereInRussia")
     val premiereInRussia: String,
-//    val trailers: List<Trailer>,
     @ColumnInfo(name = "actors")
     val actors: List<Person>,
     @ColumnInfo(name = "filmCrew")
     val filmCrew: List<Person>,
-//    val sequelsAndPrequels: List<SequelsAndPrequel>,
     @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean = false,
-    @ColumnInfo(name = "errorMessage")
-    val errorMessage: String
-)
-
-data class AllMovies(
-    val data: List<Movie>?,
-    var error: String = ""
-)
-
-data class Trailer(
-    val name: String,
-    val url: String
-)
-
-data class Person(
-    val description: String,
-    val enName: String,
-    val enProfession: String,
-    val id: Int,
-    val name: String,
-    val photo: String
-)
-
-data class SequelsAndPrequel(
-    val _id: String,
-    val alternativeName: String,
-    val id: Int,
-    val name: String,
-    val type: String
+    var isFavorite: Boolean
 )

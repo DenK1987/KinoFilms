@@ -125,6 +125,29 @@
         android:id="@+id/profile_fragment"
         android:name="com.kinofilms.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_fragment_to_favorite_movies_fragment"
+            app:destination="@id/favorite_movies_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favorite_movies_fragment"
+        android:name="com.kinofilms.ui.favoritemovies.FavoriteMoviesFragment"
+        android:label="FavoriteMoviesFragment"
+        tools:layout="@layout/fragment_favorite_movies">
+        <action
+            android:id="@+id/action_FavoriteMoviesFragment_to_ProfileFragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_favorite_movies_fragment_to_movie_fragment"
+            app:destination="@id/movie_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
+        <argument
+            android:name="id_movie"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

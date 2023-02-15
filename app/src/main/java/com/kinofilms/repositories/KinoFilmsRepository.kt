@@ -1,6 +1,9 @@
 package com.kinofilms.repositories
 
+import com.kinofilms.db.MovieDao
+import com.kinofilms.db.models.MovieEntity
 import com.kinofilms.models.AllMoviesCatalog
+import com.kinofilms.models.Movie
 import com.kinofilms.network.KinoFilmsApi
 import com.kinofilms.network.models.AllMoviesCatalogResponse
 import com.kinofilms.network.models.MovieResponse
@@ -18,7 +21,8 @@ private const val NETWORK_ERROR = "Ошибка загрузки данных! \
 private const val NULL_ERROR = "Что-то пошло не так! Повторите попытку!"
 
 class KinoFilmsRepository @Inject constructor(
-    private val api: KinoFilmsApi
+    private val api: KinoFilmsApi,
+    private val movieDao: MovieDao
 ) {
 
 //    fun getAllMovies(page: Int, limit: Int): Flow<AllMoviesCatalog> {
@@ -213,6 +217,18 @@ class KinoFilmsRepository @Inject constructor(
 
     suspend fun getAllPopularRussianSerials(): Response<AllMoviesCatalogResponse> {
         return api.getAllPopularRussianSerials()
+    }
+
+    suspend fun getFavoriteMovies(): List<Movie> {
+        return movieDao.getFavoriteMovies()
+    }
+
+    suspend fun addMovieToFavorite(movie: Movie) {
+        movieDao.addMovie(movie)
+    }
+
+    suspend fun deleteMovieFromFavorite(movie: Movie) {
+        movieDao.deleteMovie(movie)
     }
 }
 
