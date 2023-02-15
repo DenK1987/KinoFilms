@@ -46,9 +46,9 @@ data class ExternalId(val imdb: String?, val tmdb: Int?)
 data class Fact(val value: String?)
 
 data class Fees(val russia: Russia?, val usa: Usa?, val world: World?)
-data class Russia(val currency: String?, val value: Int?)
-data class Usa(val currency: String?, val value: Int?)
-data class World(val currency: String?, val value: Int?)
+data class Russia(val currency: String?, val value: Long?)
+data class Usa(val currency: String?, val value: Long?)
+data class World(val currency: String?, val value: Long?)
 
 data class Genre(val name: String?)
 

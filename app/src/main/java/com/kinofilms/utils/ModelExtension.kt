@@ -3,11 +3,9 @@ package com.kinofilms.utils
 import com.kinofilms.models.Movie
 import com.kinofilms.models.MovieCatalog
 import com.kinofilms.models.Person
-import com.kinofilms.models.SequelsAndPrequel
 import com.kinofilms.network.models.MovieCatalogResponse
 import com.kinofilms.network.models.MovieResponse
 import com.kinofilms.network.models.PersonResponse
-import com.kinofilms.network.models.SequelsAndPrequelResponse
 
 private const val PROF_ACTOR = "actor"
 private const val PROF_VOICE_ACTOR = "voice_actor"
@@ -92,6 +90,7 @@ fun MovieResponse.toMovie(): Movie {
         ratingKp = this.rating?.kp ?: 0.0,
         ratingImdb = this.rating?.imdb ?: 0.0,
 //        ratingTmdb = String.format("%.1f", this.rating?.tmdb ?: 0.0).toDouble().toString(),
+        imageUrl = this.poster?.url ?: "",
         imageBackdropUrl = this.backdrop?.url ?: "",
         description = this.description ?: "",
         movieLength = this.movieLength ?: 0,
@@ -108,3 +107,25 @@ fun MovieResponse.toMovie(): Movie {
 
 fun List<MovieResponse>.toListMovies(): List<Movie> =
     this.map { model -> model.toMovie() }
+
+//fun MovieEntity.toMovieE(): Movie {
+//    return Movie(
+//        id = this.id,
+//        name = this.name,
+//        alternativeName = this.alternativeName,
+//        year = this.year,
+//        ratingKp = this.ratingKp,
+//        ratingImdb = this.ratingImdb,
+//        imageBackdropUrl = this.imageBackdropUrl,
+//        description = this.description,
+//        movieLength = this.movieLength,
+//        genres = this.genres,
+//        countries = this.countries,
+//        worldPremiere = this.worldPremiere,
+//        premiereInRussia = this.premiereInRussia,
+//        actors = this.actors,
+//        filmCrew = this.filmCrew,
+//        errorMessage = "",
+//        isFavorite = this.isFavorite
+//    )
+//}

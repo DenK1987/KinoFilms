@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -13,12 +14,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kinofilms.R
 import com.kinofilms.databinding.FragmentMovieBinding
 import com.kinofilms.models.Movie
-import com.kinofilms.models.MovieCatalog
 import com.kinofilms.models.Person
 import com.kinofilms.ui.movie.actorsadapter.ActorsAdapter
 import com.kinofilms.ui.movie.filmcrewadapter.FilmCrewAdapter
-import com.kinofilms.ui.recommendations.RecommendationsFragmentDirections
-import com.kinofilms.ui.recommendations.adapter.MoviesByRecommendationAdapter
 import com.kinofilms.utils.loadUrl
 import com.kinofilms.utils.transformDurationMovie
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +29,10 @@ class MovieFragment : Fragment() {
     private val viewModel: MovieViewModel by viewModels()
 
     private val args: MovieFragmentArgs by navArgs()
+
+    private var isFavoriteMovie = false
+
+    private lateinit var currentMovie: Movie
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,9 +58,24 @@ class MovieFragment : Fragment() {
 //            toolbarEye.setImageResource(R.drawable.ic_outline_remove_red_eye_24)
             toolbarButton.visibility = View.VISIBLE
             toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+            toolbarButton.setOnClickListener {
+                if (!currentMovie.isFavorite) {
+                    toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+                    viewModel.setFavoriteMovie(currentMovie.id.toString(), true)
+                    viewModel.selectFavoriteMovie(currentMovie)
+                    val anim =
+                        AnimationUtils.loadAnimation(requireContext(), R.anim.anim_button_like)
+                    toolbarButton.startAnimation(anim)
+                } else {
+                    toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                    viewModel.setFavoriteMovie(currentMovie.id.toString(), false)
+                    viewModel.selectFavoriteMovie(currentMovie)
+                }
+            }
         }
 
         viewModel.movie.observe(viewLifecycleOwner) { movie ->
+            currentMovie = movie
             binding.apply {
                 nameMovie.text = movie.name
                 if (movie.alternativeName.isNotEmpty()) {
@@ -103,6 +120,15 @@ class MovieFragment : Fragment() {
                 buttonActors.text = movie.actors.size.toString()
                 initListFilmCrew(movie.filmCrew)
                 buttonFilmCrew.text = movie.filmCrew.size.toString()
+
+                val flagFavorite = viewModel.getFavoriteMovie(currentMovie.id.toString())
+                isFavoriteMovie = if (isFavoriteMovie != flagFavorite) {
+                    toolbarCustom.toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_24)
+                    true
+                } else {
+                    toolbarCustom.toolbarButton.setImageResource(R.drawable.ic_baseline_favorite_border_24)
+                    false
+                }
             }
         }
 //        Log.e("KEK", "MovieFragment ${args.idMovie}")
