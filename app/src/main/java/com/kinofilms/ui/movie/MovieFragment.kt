@@ -166,23 +166,6 @@ class MovieFragment : Fragment() {
                 )
             }
         }
-
-//        binding.apply {
-//            nameMovie.text = args.nameMovie
-//            imageMovie.loadUrl(args.imageMovie)
-//            imageMovie.alpha = 0.7F
-//            releaseYear.text = args.releaseYear
-//            ratingKp.text = args.ratingKp
-//            ratingImdb.text = args.ratingImdb
-//            ratingTmdb.text = args.ratingTmdb
-//            duration.text = args.lengthMovie?.let { transformDurationMovie(it.toInt()) }
-////            premiere.text = args.worldPremiere
-//            description.text = args.description
-////            genreMovie.text = args.genres
-////            country.text = args.countries
-//        }
-
-
     }
 
     private fun initListActors(list: List<Person>) {

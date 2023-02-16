@@ -7,6 +7,6 @@ import com.kinofilms.R
 fun ImageView.loadUrl(url: String) {
     Glide.with(context)
         .load(url)
-        .placeholder(R.drawable.kinofilms_logo1)
+        .placeholder(R.drawable.kinofilms_logo7)
         .into(this)
 }

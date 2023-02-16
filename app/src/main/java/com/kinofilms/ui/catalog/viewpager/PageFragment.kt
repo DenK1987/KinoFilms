@@ -10,11 +10,9 @@ import com.kinofilms.R
 import com.kinofilms.databinding.FragmentPageBinding
 import com.kinofilms.ui.catalog.FragmentType.*
 
-class PageFragment : Fragment()  {  //, PopupMenu.OnMenuItemClickListener
+class PageFragment : Fragment()  {
 
     private lateinit var binding: FragmentPageBinding
-
-//    private val viewModel: CatalogViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,13 +30,6 @@ class PageFragment : Fragment()  {  //, PopupMenu.OnMenuItemClickListener
             toolbarTitle.text = getString(R.string.catalog)
             toolbarButton.visibility = View.VISIBLE
             toolbarButton.setImageResource(R.drawable.ic_baseline_tune_24)
-//            toolbarButton.setImageResource(R.drawable.ic_baseline_filter_list_24)
-//            toolbarButton.setOnClickListener {
-//                PopupMenu(requireContext(), it).apply {
-//                    setOnMenuItemClickListener(this@PageFragment)
-//                    menuInflater.inflate(R.menu.menu_popup_filter_movies, menu)
-//                }.show()
-//            }
         }
 
         val newAdapter = ViewPagerAdapter(this@PageFragment)
@@ -55,22 +46,4 @@ class PageFragment : Fragment()  {  //, PopupMenu.OnMenuItemClickListener
             }
         }.attach()
     }
-//
-//    override fun onMenuItemClick(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.filter_by_popularity -> {
-//                viewModel.sortedMoviesByPopularity()
-//                true
-//            }
-//            R.id.filter_by_rating -> {
-//                viewModel.sortedMoviesByRating()
-//                true
-//            }
-//            R.id.filter_by_release_date -> {
-//                viewModel.sortedMoviesByReleaseDate()
-//                true
-//            }
-//            else -> false
-//        }
-//    }
 }

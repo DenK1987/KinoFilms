@@ -107,25 +107,3 @@ fun MovieResponse.toMovie(): Movie {
 
 fun List<MovieResponse>.toListMovies(): List<Movie> =
     this.map { model -> model.toMovie() }
-
-//fun MovieEntity.toMovieE(): Movie {
-//    return Movie(
-//        id = this.id,
-//        name = this.name,
-//        alternativeName = this.alternativeName,
-//        year = this.year,
-//        ratingKp = this.ratingKp,
-//        ratingImdb = this.ratingImdb,
-//        imageBackdropUrl = this.imageBackdropUrl,
-//        description = this.description,
-//        movieLength = this.movieLength,
-//        genres = this.genres,
-//        countries = this.countries,
-//        worldPremiere = this.worldPremiere,
-//        premiereInRussia = this.premiereInRussia,
-//        actors = this.actors,
-//        filmCrew = this.filmCrew,
-//        errorMessage = "",
-//        isFavorite = this.isFavorite
-//    )
-//}

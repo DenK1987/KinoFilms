@@ -1,7 +1,6 @@
 package com.kinofilms.repositories
 
 import com.kinofilms.db.MovieDao
-import com.kinofilms.db.models.MovieEntity
 import com.kinofilms.models.AllMoviesCatalog
 import com.kinofilms.models.Movie
 import com.kinofilms.network.KinoFilmsApi
@@ -54,77 +53,6 @@ class KinoFilmsRepository @Inject constructor(
             }
         }.flowOn(Dispatchers.IO)
     }
-
-//    fun getAllPopularForeignMovies(): Flow<AllMoviesCatalog> {
-//        return flow {
-//            emit(
-//                AllMoviesCatalog(
-//                    data = api.getAllMovies().checkError().body()?.docs?.toListMoviesCatalog()
-//                )
-//            )
-//        }.catch { throwable ->
-//            when (throwable) {
-//                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
-//                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
-
-
-//
-//    fun getAllMoviesSortedByPopularity(): Flow<AllMoviesCatalog> {
-//        return flow {
-//            emit(
-//                AllMoviesCatalog(
-//                    data = api.getAllMovies().checkError().body()?.docs?.toListMoviesCatalog()
-//                        ?.sortedBy { movies ->
-//                            movies.votesKp
-//                        }
-//                )
-//            )
-//        }.catch { throwable ->
-//            when (throwable) {
-//                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
-//                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
-//
-//    fun getAllMoviesSortedByRating(): Flow<AllMoviesCatalog> {
-//        return flow {
-//            emit(
-//                AllMoviesCatalog(
-//                    data = api.getAllMovies().checkError().body()?.docs?.toListMoviesCatalog()
-//                        ?.sortedByDescending { movies ->
-//                            movies.ratingKp
-//                        }
-//                )
-//            )
-//        }.catch { throwable ->
-//            when (throwable) {
-//                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
-//                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
-//
-//    fun getAllMoviesSortedByReleaseDate(): Flow<AllMoviesCatalog> {
-//        return flow {
-//            emit(
-//                AllMoviesCatalog(
-//                    data = api.getAllMovies().checkError().body()?.docs?.toListMoviesCatalog()
-//                        ?.sortedByDescending { movies ->
-//                            movies.year
-//                        }
-//                )
-//            )
-//        }.catch { throwable ->
-//            when (throwable) {
-//                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
-//                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
 
     fun getAllSerials(): Flow<AllMoviesCatalog> {
         return flow {
@@ -186,17 +114,6 @@ class KinoFilmsRepository @Inject constructor(
             }
         }.flowOn(Dispatchers.IO)
     }
-
-//    fun getMovie(id: Int): Flow<Movie?> {
-//        return flow {
-//            emit(api.getMovie(id).checkError().body()?.toMovie())
-//        }.catch { throwable ->
-//            when (throwable) {
-//                is HttpException -> AllMovies(emptyList(), NETWORK_ERROR)
-//                else -> AllMovies(emptyList(), NULL_ERROR)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
 
     suspend fun getMovie(id: Int): Response<MovieResponse> {
 //        Log.e("KEK", "KinopoiskRepository $id")

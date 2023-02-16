@@ -57,24 +57,9 @@ class CatalogFragment : Fragment() {
         binding.catalogMovies.run {
             if (adapter == null) {
                 adapter = MoviesAdapter {
-//                    navigationFragments(
-//                        parentFragmentManager,
-//                        HeroFragment.newInstance(it.id.toString())
-//                    )
                     findNavController().navigate(
                         PageFragmentDirections.actionPageFragmentToMovieFragment(
                             it.id.toString()
-//                            it.name,
-//                            it.imageUrl,
-//                            it.year,
-//                            it.ratingKp,
-//                            it.ratingImdb,
-//                            it.ratingTmdb,
-//                            it.movieLength.toString(),
-//                            it.description,
-//                            it.worldPremiere
-//                            it.genres.toString(),
-//                            it.countries.toString()
                         )
                     )
                 }
