@@ -1,26 +1,18 @@
 package com.kinofilms.network
 
 import com.kinofilms.network.models.AllMoviesCatalogResponse
-import com.kinofilms.network.models.MovieCatalogResponse
 import com.kinofilms.network.models.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface KinoFilmsApi {
 
-//    @GET("/movie")
-//    suspend fun getMovies(
+//    @GET("/movie?field=typeNumber&search=1&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
+//    suspend fun getAllMovies(
 //        @Query("page") page: Int,
-//        @Query("limit") limit: Int? = 50              limit=820854
-//    ): Response<AllDisneyHeroesResponse>
-
-    @GET("/movie?field=typeNumber&search=1&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
-    suspend fun getAllMovies(
-        @Query("page") page: Int,
-        @Query("limit") limit: Int? = 50
-    ): Response<AllMoviesCatalogResponse>
+//        @Query("limit") limit: Int? = 50               // limit=820854
+//    ): Response<AllMoviesCatalogResponse>
 
     @GET("/movie?field=typeNumber&search=1&limit=300&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
     suspend fun getAllMovies(): Response<AllMoviesCatalogResponse>

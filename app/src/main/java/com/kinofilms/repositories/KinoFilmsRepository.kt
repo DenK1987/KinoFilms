@@ -24,21 +24,6 @@ class KinoFilmsRepository @Inject constructor(
     private val movieDao: MovieDao
 ) {
 
-//    fun getAllMovies(page: Int, limit: Int): Flow<AllMoviesCatalog> {
-//        return flow {
-//            emit(
-//                AllMoviesCatalog(
-//                    data = api.getAllMovies(page, limit).checkError().body()?.docs?.toListMoviesCatalog()
-//                )
-//            )
-//        }.catch { throwable ->
-//            when (throwable) {
-//                is HttpException -> AllMoviesCatalog(emptyList(), NETWORK_ERROR)
-//                else -> AllMoviesCatalog(emptyList(), NULL_ERROR)
-//            }
-//        }.flowOn(Dispatchers.IO)
-//    }
-
     fun getAllMovies(): Flow<AllMoviesCatalog> {
         return flow {
             emit(

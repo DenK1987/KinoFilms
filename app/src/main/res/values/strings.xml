@@ -51,4 +51,7 @@
     <string name="profession_actor">actor</string>
     <string name="profession_voice_actor">voice_actor</string>
     <string name="en_profession">Profession</string>
+    <string name="type_movie">movie</string>
+    <string name="type_tv_series">tv-series</string>
+    <string name="type_cartoon">cartoon</string>
 </resources>

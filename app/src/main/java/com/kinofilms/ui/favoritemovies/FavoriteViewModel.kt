@@ -12,16 +12,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteMoviesViewModel @Inject constructor(
+class FavoriteViewModel @Inject constructor(
     private val repository: KinoFilmsRepository
 ) : ViewModel() {
 
-    private val _listMovies = MutableLiveData<List<Movie>>()
-    val listMovies: LiveData<List<Movie>> = _listMovies
+    private val _listFavorite = MutableLiveData<List<Movie>>()
+    val listFavorite: LiveData<List<Movie>> = _listFavorite
 
-    fun getListFavoriteMovies() {
+    fun getListFavorite() {
         viewModelScope.launch(Dispatchers.IO) {
-            _listMovies.postValue(repository.getFavoriteMovies())
+            _listFavorite.postValue(repository.getFavoriteMovies())
         }
     }
 }

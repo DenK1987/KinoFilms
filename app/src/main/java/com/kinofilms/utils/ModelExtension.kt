@@ -101,6 +101,7 @@ fun MovieResponse.toMovie(): Movie {
         actors = persons?.toListActors() ?: emptyList(),
         filmCrew = persons?.toListFilmCrew() ?: emptyList(),
 //        sequelsAndPrequels = sequelsAndPrequels?.toListSequelsAndPrequel() ?: emptyList(),
+        type = this.type ?: "",
         errorMessage = ""
     )
 }

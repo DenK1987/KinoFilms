@@ -44,6 +44,8 @@ data class Movie(
     @ColumnInfo(name = "filmCrew")
     val filmCrew: List<Person>,
 //    val sequelsAndPrequels: List<SequelsAndPrequel>,
+    @ColumnInfo(name = "type")
+    val type: String,
     @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false,
     @ColumnInfo(name = "errorMessage")

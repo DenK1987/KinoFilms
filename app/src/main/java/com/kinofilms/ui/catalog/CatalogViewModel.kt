@@ -32,16 +32,4 @@ class CatalogViewModel @Inject constructor(
     fun setId(id: Int) {
         _id.tryEmit(id)
     }
-
-//    fun sortedMoviesByPopularity() {
-//        repository.getAllMoviesSortedByPopularity()
-//    }
-//
-//    fun sortedMoviesByRating() {
-//        repository.getAllMoviesSortedByRating()
-//    }
-//
-//    fun sortedMoviesByReleaseDate() {
-//        repository.getAllMoviesSortedByReleaseDate()
-//    }
 }

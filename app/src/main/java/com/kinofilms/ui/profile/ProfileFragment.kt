@@ -41,6 +41,14 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profile_fragment_to_favorite_movies_fragment)
         }
 
+        binding.buttonFavoritesSerials.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_fragment_to_favorite_serials_fragment)
+        }
+
+        binding.buttonFavoritesCartoons.setOnClickListener {
+            findNavController().navigate(R.id.action_profile_fragment_to_favorite_cartoons_fragment)
+        }
+
         binding.versionApp.text = "${getString(R.string.version_app)} ${BuildConfig.VERSION_NAME}"
     }
 }
