@@ -29,6 +29,12 @@ class RecommendationsViewModel @Inject constructor(
     private val _listPopularRussianSerials = MutableLiveData<List<MovieCatalog>>()
     val listPopularRussianSerials: LiveData<List<MovieCatalog>> = _listPopularRussianSerials
 
+    private val _listPopularCartoons = MutableLiveData<List<MovieCatalog>>()
+    val listPopularCartoons: LiveData<List<MovieCatalog>> = _listPopularCartoons
+
+    private val _listPopularRomanticComedies = MutableLiveData<List<MovieCatalog>>()
+    val listPopularRomanticComedies: LiveData<List<MovieCatalog>> = _listPopularRomanticComedies
+
     fun getListPopularForeignMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             val response = repository.getAllPopularForeignMovies()
@@ -73,6 +79,19 @@ class RecommendationsViewModel @Inject constructor(
             val response = repository.getAllPopularRussianSerials()
             if (response.isSuccessful) {
                 _listPopularRussianSerials.postValue(
+                    response.body()?.docs?.toListMoviesCatalog() ?: emptyList()
+                )
+            } else {
+                response.errorBody()
+            }
+        }
+    }
+
+    fun getListPopularCartoons() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = repository.getAllPopularCartoons()
+            if (response.isSuccessful) {
+                _listPopularCartoons.postValue(
                     response.body()?.docs?.toListMoviesCatalog() ?: emptyList()
                 )
             } else {

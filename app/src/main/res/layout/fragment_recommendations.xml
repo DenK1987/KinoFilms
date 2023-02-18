@@ -16,9 +16,10 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
+        android:layout_marginBottom="@dimen/dp_10"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_custom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -146,6 +147,37 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/button_popular_russian_serials"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_movie_recommendations" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_popular_cartoons"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_5"
+                android:background="@color/color_app_fragment"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:drawableTint="@color/white"
+                android:gravity="start|center"
+                android:paddingVertical="@dimen/dp_16"
+                android:text="@string/popular_cartoons"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/list_popular_russian_serials" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_popular_cartoons"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_popular_cartoons"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_movie_recommendations" />
 

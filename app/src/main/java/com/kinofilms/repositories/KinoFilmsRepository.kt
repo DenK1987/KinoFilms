@@ -121,6 +121,10 @@ class KinoFilmsRepository @Inject constructor(
         return api.getAllPopularRussianSerials()
     }
 
+    suspend fun getAllPopularCartoons(): Response<AllMoviesCatalogResponse> {
+        return api.getAllPopularCartoons()
+    }
+
     suspend fun getFavoriteMovies(): List<Movie> {
         return movieDao.getFavoriteMovies()
     }

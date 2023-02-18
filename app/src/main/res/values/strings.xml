@@ -46,8 +46,9 @@
     <string name="support">Поддержка: denis.klishevich@gmail.com</string>
     <string name="popular_foreign_movies">Популярные зарубежные фильмы</string>
     <string name="popular_foreign_serials">Популярные зарубежные сериалы</string>
-    <string name="popular_russian_movies">Популярные русские фильмы</string>
-    <string name="popular_russian_serials">Популярные русские сериалы</string>
+    <string name="popular_russian_movies">Популярные российские фильмы</string>
+    <string name="popular_russian_serials">Популярные российские сериалы</string>
+    <string name="popular_cartoons">Популярные мультфильмы</string>
     <string name="profession_actor">actor</string>
     <string name="profession_voice_actor">voice_actor</string>
     <string name="en_profession">Profession</string>

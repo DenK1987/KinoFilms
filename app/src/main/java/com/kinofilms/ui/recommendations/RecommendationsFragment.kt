@@ -65,6 +65,12 @@ class RecommendationsFragment : Fragment() {
         }
         viewModel.getListPopularRussianSerials()
 
+        viewModel.listPopularCartoons.observe(viewLifecycleOwner) {
+            binding.apply {
+                initListPopularCartoons(it)
+            }
+        }
+        viewModel.getListPopularCartoons()
     }
 
     private fun initListPopularForeignMovies(list: List<MovieCatalog>) {
@@ -120,6 +126,23 @@ class RecommendationsFragment : Fragment() {
 
     private fun initListPopularRussianSerials(list: List<MovieCatalog>) {
         binding.listPopularRussianSerials.run {
+            if (adapter == null) {
+                adapter = MoviesByRecommendationAdapter {
+                    findNavController().navigate(
+                        RecommendationsFragmentDirections.actionRecommendationsFragmentToMovieFragment(
+                            it.id.toString()
+                        )
+                    )
+                }
+                layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            }
+            (adapter as? MoviesByRecommendationAdapter)?.submitList(list)
+        }
+    }
+
+    private fun initListPopularCartoons(list: List<MovieCatalog>) {
+        binding.listPopularCartoons.run {
             if (adapter == null) {
                 adapter = MoviesByRecommendationAdapter {
                     findNavController().navigate(
