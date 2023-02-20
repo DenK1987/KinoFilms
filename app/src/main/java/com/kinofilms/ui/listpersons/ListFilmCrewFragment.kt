@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,16 +46,27 @@ class ListFilmCrewFragment : Fragment() {
             toolbarTitle.text = getString(R.string.film_crew)
         }
 
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            binding.layoutProgress.isVisible = state
+        }
+
         viewModel.listFilmCrew.observe(viewLifecycleOwner) { list ->
-            setListFilmCrew(list.filmCrew)
+            initListFilmCrew(list.filmCrew)
         }
         viewModel.getListFilmCrew(args.idMovie.toInt())
     }
 
-    private fun setListFilmCrew(list: List<Person>) {
+    private fun initListFilmCrew(list: List<Person>) {
         binding.listFilmCrew.run {
             if (adapter == null) {
-                adapter = PersonsByProfessionAdapter()
+                adapter = PersonsByProfessionAdapter {
+                    findNavController().navigate(
+                        ListFilmCrewFragmentDirections.actionListFilmCrewFragmentToPersonFragment(
+                            it.id.toString(),
+                            it.name
+                        )
+                    )
+                }
                 layoutManager = LinearLayoutManager(requireContext())
             }
             (adapter as? PersonsByProfessionAdapter)?.submitList(list)

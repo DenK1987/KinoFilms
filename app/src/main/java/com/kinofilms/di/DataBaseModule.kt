@@ -1,7 +1,9 @@
-package com.kinofilms.db
+package com.kinofilms.di
 
 import android.content.Context
 import androidx.room.Room
+import com.kinofilms.db.AppDataBase
+import com.kinofilms.db.MovieDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataBase {
+object DataBaseModule {
 
     @Provides
     fun provideDB(@ApplicationContext context: Context): AppDataBase {

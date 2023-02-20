@@ -2,6 +2,7 @@ package com.kinofilms.network
 
 import com.kinofilms.network.models.AllMoviesCatalogResponse
 import com.kinofilms.network.models.MovieResponse
+import com.kinofilms.network.models.PersonModelResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -46,4 +47,7 @@ interface KinoFilmsApi {
 
     @GET("/movie?field=typeNumber&search=3&sortField=votes.imdb&sortType=-1&limit=50&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
     suspend fun getAllPopularCartoons(): Response<AllMoviesCatalogResponse>
+
+    @GET("/person?field=id&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
+    suspend fun getPerson(@Query("search") id: Int): Response<PersonModelResponse>
 }

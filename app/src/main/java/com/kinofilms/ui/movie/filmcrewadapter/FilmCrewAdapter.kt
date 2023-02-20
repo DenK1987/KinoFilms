@@ -7,7 +7,7 @@ import com.kinofilms.databinding.ItemPersonBinding
 import com.kinofilms.models.Person
 
 class FilmCrewAdapter(
-//    private val onClickActor: (movie: MovieCatalog) -> Unit
+    private val onClickFilmCrew: (person: Person) -> Unit
 ) :
     ListAdapter<Person, FilmCrewViewHolder>(FilmCrewUtilCallback()) {
 
@@ -23,8 +23,8 @@ class FilmCrewAdapter(
 
     override fun onBindViewHolder(holder: FilmCrewViewHolder, position: Int) {
         holder.bind(getItem(position))
-//        holder.itemView.setOnClickListener {
-//            onClickMovie(getItem(position))
-//        }
+        holder.itemView.setOnClickListener {
+            onClickFilmCrew(getItem(position))
+        }
     }
 }

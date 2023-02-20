@@ -1,11 +1,11 @@
 package com.kinofilms.ui.catalog
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -44,8 +44,13 @@ class CatalogFragment : Fragment() {
         }
 
         lifecycleScope.launch {
+            viewModel.state.collectLatest { state ->
+                binding.layoutProgress.isVisible = state
+            }
+        }
+
+        lifecycleScope.launch {
             viewModel.catalog.collectLatest { result ->
-                Log.e("KEK", result.toString())
                 if (result.error.isEmpty())
                     initCatalogMovies(result.data ?: emptyList())
                 else toast(result.error)

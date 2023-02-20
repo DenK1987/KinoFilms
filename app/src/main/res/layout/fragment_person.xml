@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_app_fragment">
+
+    <include
+        android:id="@+id/toolbar_custom"
+        layout="@layout/custom_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_custom">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_0">
+
+            <ImageView
+                android:id="@+id/photo_person"
+                android:layout_width="@dimen/dp_160"
+                android:layout_height="@dimen/dp_220"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="@color/color_text_unchecked"
+                android:scaleType="fitXY"
+                android:src="@drawable/kinofilms_logo7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name_person"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_24"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/photo_person"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/name_person" />
+
+            <TextView
+                android:id="@+id/en_name_person"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:textColor="@color/color_text_unchecked"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/photo_person"
+                app:layout_constraintTop_toBottomOf="@id/name_person"
+                tools:text="@string/en_name_person" />
+
+            <TextView
+                android:id="@+id/profession"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_16"
+                android:paddingHorizontal="@dimen/dp_16"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/photo_person"
+                app:layout_constraintTop_toBottomOf="@id/en_name_person"
+                tools:text="@string/en_profession" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/birthday"-->
+            <!--                android:layout_width="@dimen/dp_0"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/dp_10"-->
+            <!--                android:paddingHorizontal="@dimen/dp_16"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="@dimen/sp_16"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toEndOf="@id/photo_person"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/profession"-->
+            <!--                tools:text="@string/birthday" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/age"-->
+            <!--                android:layout_width="@dimen/dp_0"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/dp_10"-->
+            <!--                android:paddingHorizontal="@dimen/dp_16"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="@dimen/sp_16"-->
+            <!--                app:layout_constraintStart_toEndOf="@id/photo_person"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/birthday"-->
+            <!--                tools:text="@string/age" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/growth"-->
+            <!--                android:layout_width="@dimen/dp_0"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/dp_10"-->
+            <!--                android:paddingHorizontal="@dimen/dp_16"-->
+            <!--                android:textColor="@color/white"-->
+            <!--                android:textSize="@dimen/sp_16"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toEndOf="@id/age"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/birthday"-->
+            <!--                tools:text="@string/growth" />-->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_more_detailed"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:background="@color/color_app_fragment"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:drawableTint="@color/color_app_blue"
+                android:text="@string/more_detailed"
+                android:textAllCaps="false"
+                android:textColor="@color/color_app_blue"
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/photo_person"
+                app:layout_constraintStart_toEndOf="@id/photo_person" />
+
+            <TextView
+                android:id="@+id/facts"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:text="@string/facts"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/button_facts"
+                app:layout_constraintEnd_toStartOf="@id/button_facts"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/button_facts" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_facts"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginEnd="@dimen/dp_5"
+                android:background="@color/color_app_fragment"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_right_24"
+                android:drawableTint="@color/color_app_blue"
+                android:gravity="end|center"
+                android:textColor="@color/color_app_blue"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/photo_person"
+                tools:text="@string/default_count" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_facts"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_0"
+                android:layout_marginStart="@dimen/dp_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_facts"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_fact_person" />
+
+            <TextView
+                android:id="@+id/filmography"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:text="@string/filmography"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/list_facts" />
+
+            <!--            <androidx.recyclerview.widget.RecyclerView-->
+            <!--                android:id="@+id/list_movies_person"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/dp_0"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/filmography"-->
+            <!--                tools:itemCount="3"-->
+            <!--                tools:listitem="@layout/item_person_profession" />-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/layout_progress"
+        android:layout_width="@dimen/dp_0"
+        android:layout_height="@dimen/dp_0"
+        android:background="@color/color_app_bottom_toolbar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_custom">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/color_app_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_60"
+            android:text="@string/please_wait"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

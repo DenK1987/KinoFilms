@@ -27,11 +27,16 @@ class ListPersonsViewModel @Inject constructor(
     private val _listFilmCrew = MutableLiveData<Movie>()
     val listFilmCrew: LiveData<Movie> = _listFilmCrew
 
+    private val _state = MutableLiveData<Boolean>()
+    val state: LiveData<Boolean> = _state
+
     fun getListActors(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.postValue(true)
             val response = repository.getMovie(id)
             if (response.isSuccessful) {
                 _listActors.postValue((response.body()?.toMovie()))
+                _state.postValue(false)
             } else {
                 response.errorBody()
             }
@@ -40,9 +45,11 @@ class ListPersonsViewModel @Inject constructor(
 
     fun getListVoiceActors(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.postValue(true)
             val response = repository.getMovie(id)
             if (response.isSuccessful) {
                 _listVoiceActors.postValue((response.body()?.toMovie()))
+                _state.postValue(false)
             } else {
                 response.errorBody()
             }
@@ -51,9 +58,11 @@ class ListPersonsViewModel @Inject constructor(
 
     fun getListFilmCrew(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
+            _state.postValue(true)
             val response = repository.getMovie(id)
             if (response.isSuccessful) {
                 _listFilmCrew.postValue((response.body()?.toMovie()))
+                _state.postValue(false)
             } else {
                 response.errorBody()
             }

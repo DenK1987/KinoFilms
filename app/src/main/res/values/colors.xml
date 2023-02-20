@@ -13,5 +13,6 @@
     <color name="color_app_fragment">#2B363C</color>
     <color name="color_app_blue">#39B9FF</color>
     <color name="color_transparent">#0039B9FF</color>
+    <color name="color_bg_fact">#3390A6B4</color>
 
 </resources>
