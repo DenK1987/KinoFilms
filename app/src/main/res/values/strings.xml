@@ -51,8 +51,17 @@
     <string name="popular_cartoons">Популярные мультфильмы</string>
     <string name="profession_actor">actor</string>
     <string name="profession_voice_actor">voice_actor</string>
+    <string name="birthday">Дата рождения</string>
+    <string name="growth">Рост</string>
+    <string name="age">Возраст</string>
+    <string name="years">лет</string>
     <string name="en_profession">Profession</string>
     <string name="type_movie">movie</string>
     <string name="type_tv_series">tv-series</string>
     <string name="type_cartoon">cartoon</string>
+    <string name="more_detailed">Подробнее</string>
+    <string name="facts">Знаете ли вы, что…</string>
+    <string name="fact_value">Текст факта</string>
+    <string name="filmography">Фильмография</string>
+    <string name="please_wait">Пожалуйста, подождите...</string>
 </resources>

@@ -6,24 +6,20 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/dp_8"
     android:layout_marginEnd="@dimen/dp_16"
-    tools:background="@color/color_app_fragment">
-
-    <VideoView
-        android:id="@+id/trailer_movie"
-        android:layout_width="@dimen/dp_220"
-        android:layout_height="@dimen/dp_120"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@color/color_app_fragment">
 
     <TextView
-        android:id="@+id/name_actor"
+        android:id="@+id/fact_value"
         android:layout_width="@dimen/dp_220"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
+        android:layout_height="@dimen/dp_120"
+        android:background="@color/color_bg_fact"
+        android:ellipsize="end"
+        android:maxLines="6"
+        android:padding="@dimen/dp_10"
         android:textColor="@color/white"
-        android:textSize="@dimen/sp_16"
+        android:textSize="@dimen/sp_14"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trailer_movie"
-        tools:text="Name trailer" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/fact_value" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

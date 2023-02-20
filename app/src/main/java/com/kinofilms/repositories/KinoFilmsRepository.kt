@@ -6,12 +6,11 @@ import com.kinofilms.models.Movie
 import com.kinofilms.network.KinoFilmsApi
 import com.kinofilms.network.models.AllMoviesCatalogResponse
 import com.kinofilms.network.models.MovieResponse
+import com.kinofilms.network.models.PersonModelResponse
+import com.kinofilms.ui.recommendations.RecommendationType.*
 import com.kinofilms.utils.toListMoviesCatalog
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import retrofit2.HttpException
 import retrofit2.Response
 import javax.inject.Inject
@@ -101,29 +100,69 @@ class KinoFilmsRepository @Inject constructor(
     }
 
     suspend fun getMovie(id: Int): Response<MovieResponse> {
-//        Log.e("KEK", "KinopoiskRepository $id")
         return api.getMovie(id)
     }
 
-    suspend fun getAllPopularForeignMovies(): Response<AllMoviesCatalogResponse> {
-        return api.getAllPopularForeignMovies()
+    fun getAllPopulars(): Flow<Map<String, AllMoviesCatalogResponse>> {
+        return flow {
+
+            val result = mutableMapOf<String, AllMoviesCatalogResponse>()
+
+            if (api.getAllPopularForeignMovies().isSuccessful)
+                api.getAllPopularForeignMovies().body()?.let { data ->
+                    result.put(POPULAR_FOREIGN_MOVIES.name, data)
+                }
+            else emptyList<AllMoviesCatalogResponse>()
+
+            if (api.getAllPopularForeignSerials().isSuccessful)
+                api.getAllPopularForeignSerials().body()?.let { model ->
+                    result.put(POPULAR_FOREIGN_SERIALS.name, model)
+                }
+            else emptyList<AllMoviesCatalogResponse>()
+
+            if (api.getAllPopularRussianMovies().isSuccessful)
+                api.getAllPopularRussianMovies().body()?.let { model ->
+                    result.put(POPULAR_RUSSIAN_MOVIES.name, model)
+                }
+            else emptyList<AllMoviesCatalogResponse>()
+
+            if (api.getAllPopularRussianSerials().isSuccessful)
+                api.getAllPopularRussianSerials().body()?.let { model ->
+                    result.put(POPULAR_RUSSIAN_SERIALS.name, model)
+                }
+            else emptyList<AllMoviesCatalogResponse>()
+
+            if (api.getAllPopularCartoons().isSuccessful)
+                api.getAllPopularCartoons().body()?.let { model ->
+                    result.put(POPULAR_CARTOONS.name, model)
+                }
+            else emptyList<AllMoviesCatalogResponse>()
+
+            emit(result)
+        }.catch {
+            emit(emptyMap<String, AllMoviesCatalogResponse>().toMutableMap())
+        }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getAllPopularForeignSerials(): Response<AllMoviesCatalogResponse> {
-        return api.getAllPopularForeignSerials()
-    }
-
-    suspend fun getAllPopularRussianMovies(): Response<AllMoviesCatalogResponse> {
-        return api.getAllPopularRussianMovies()
-    }
-
-    suspend fun getAllPopularRussianSerials(): Response<AllMoviesCatalogResponse> {
-        return api.getAllPopularRussianSerials()
-    }
-
-    suspend fun getAllPopularCartoons(): Response<AllMoviesCatalogResponse> {
-        return api.getAllPopularCartoons()
-    }
+//    suspend fun getAllPopularForeignMovies(): Response<AllMoviesCatalogResponse> {
+//        return api.getAllPopularForeignMovies()
+//    }
+//
+//    suspend fun getAllPopularForeignSerials(): Response<AllMoviesCatalogResponse> {
+//        return api.getAllPopularForeignSerials()
+//    }
+//
+//    suspend fun getAllPopularRussianMovies(): Response<AllMoviesCatalogResponse> {
+//        return api.getAllPopularRussianMovies()
+//    }
+//
+//    suspend fun getAllPopularRussianSerials(): Response<AllMoviesCatalogResponse> {
+//        return api.getAllPopularRussianSerials()
+//    }
+//
+//    suspend fun getAllPopularCartoons(): Response<AllMoviesCatalogResponse> {
+//        return api.getAllPopularCartoons()
+//    }
 
     suspend fun getFavoriteMovies(): List<Movie> {
         return movieDao.getFavoriteMovies()
@@ -135,6 +174,10 @@ class KinoFilmsRepository @Inject constructor(
 
     suspend fun deleteMovieFromFavorite(movie: Movie) {
         movieDao.deleteMovie(movie)
+    }
+
+    suspend fun getPerson(id: Int): Response<PersonModelResponse> {
+        return api.getPerson(id)
     }
 }
 

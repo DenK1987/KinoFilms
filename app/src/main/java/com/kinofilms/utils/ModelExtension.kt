@@ -1,11 +1,7 @@
 package com.kinofilms.utils
 
-import com.kinofilms.models.Movie
-import com.kinofilms.models.MovieCatalog
-import com.kinofilms.models.Person
-import com.kinofilms.network.models.MovieCatalogResponse
-import com.kinofilms.network.models.MovieResponse
-import com.kinofilms.network.models.PersonResponse
+import com.kinofilms.models.*
+import com.kinofilms.network.models.*
 
 private const val PROF_ACTOR = "actor"
 private const val PROF_VOICE_ACTOR = "voice_actor"
@@ -56,32 +52,7 @@ fun List<PersonResponse>.toListFilmCrew(): List<Person> =
                     && it.enProfession != PROF_VOICE_ACTOR
         }
 
-//fun SequelsAndPrequelResponse.toSequelsAndPrequel(): SequelsAndPrequel {
-//    return SequelsAndPrequel(
-//        _id = this._id ?: "",
-//        alternativeName = this.alternativeName ?: "",
-//        id = this.id ?: 0,
-//        name = this.name ?: "",
-//        type = this.type ?: ""
-//    )
-//}
-//
-//fun List<SequelsAndPrequelResponse>.toListSequelsAndPrequel(): List<SequelsAndPrequel> =
-//    this.map { model -> model.toSequelsAndPrequel() }
-
 fun MovieResponse.toMovie(): Movie {
-    val listGenres = mutableListOf<String>()
-
-    if (genres?.isNotEmpty() == true) {
-        listGenres.add(genres.toString())
-    }
-
-    val listCountries = mutableListOf<String>()
-
-    if (countries?.isNotEmpty() == true) {
-        listCountries.add(countries.toString())
-    }
-
     return Movie(
         id = this.id,
         name = this.name ?: "",
@@ -89,18 +60,16 @@ fun MovieResponse.toMovie(): Movie {
         year = this.year.toString(),
         ratingKp = this.rating?.kp ?: 0.0,
         ratingImdb = this.rating?.imdb ?: 0.0,
-//        ratingTmdb = String.format("%.1f", this.rating?.tmdb ?: 0.0).toDouble().toString(),
         imageUrl = this.poster?.url ?: "",
         imageBackdropUrl = this.backdrop?.url ?: "",
         description = this.description ?: "",
         movieLength = this.movieLength ?: 0,
-        genres = listGenres,
-        countries = listCountries,
+        genres = this.genres?.map { it.name ?: "" } ?: emptyList(),
+        countries = this.countries?.map { it.name ?: "" } ?: emptyList(),
         worldPremiere = this.premiere?.world ?: "",
         premiereInRussia = this.premiere?.russia ?: "",
         actors = persons?.toListActors() ?: emptyList(),
         filmCrew = persons?.toListFilmCrew() ?: emptyList(),
-//        sequelsAndPrequels = sequelsAndPrequels?.toListSequelsAndPrequel() ?: emptyList(),
         type = this.type ?: "",
         errorMessage = ""
     )
@@ -108,3 +77,29 @@ fun MovieResponse.toMovie(): Movie {
 
 fun List<MovieResponse>.toListMovies(): List<Movie> =
     this.map { model -> model.toMovie() }
+
+fun PersonModelResponse.toPersonModel(): PersonModel {
+    return PersonModel(
+        id = this.id,
+        name = this.name ?: "",
+        enName = this.enName ?: "",
+        age = this.age ?: 0,
+        growth = this.growth ?: 0,
+        countAwards = this.countAwards ?: 0,
+        photo = this.photo ?: "",
+        sex = this.sex ?: "",
+        birthday = this.birthday ?: "",
+        birthPlace = this.birthPlace?.map { it.value ?: "" } ?: emptyList(),
+        death = this.death ?: "",
+        deathPlace = this.deathPlace?.map { it.value ?: "" } ?: emptyList(),
+        profession = this.profession?.map { it.value ?: "" } ?: emptyList(),
+        facts = this.facts?.toListFactsPerson() ?: emptyList()
+    )
+}
+
+fun FactPersonResponse.toFactPerson(): FactPerson {
+    return FactPerson(value = this.value ?: "")
+}
+
+fun List<FactPersonResponse>.toListFactsPerson(): List<FactPerson> =
+    this.map { model -> model.toFactPerson() }

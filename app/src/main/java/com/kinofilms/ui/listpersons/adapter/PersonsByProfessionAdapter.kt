@@ -7,7 +7,7 @@ import com.kinofilms.databinding.ItemPersonProfessionBinding
 import com.kinofilms.models.Person
 
 class PersonsByProfessionAdapter(
-//    private val onClickActor: (movie: MovieCatalog) -> Unit
+    private val onClickPerson: (person: Person) -> Unit
 ) :
     ListAdapter<Person, PersonsByProfessionViewHolder>(PersonsByProfessionUtilCallback()) {
 
@@ -23,8 +23,8 @@ class PersonsByProfessionAdapter(
 
     override fun onBindViewHolder(holder: PersonsByProfessionViewHolder, position: Int) {
         holder.bind(getItem(position))
-//        holder.itemView.setOnClickListener {
-//            onClickMovie(getItem(position))
-//        }
+        holder.itemView.setOnClickListener {
+            onClickPerson(getItem(position))
+        }
     }
 }

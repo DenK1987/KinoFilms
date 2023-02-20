@@ -14,19 +14,23 @@
             android:id="@+id/action_PageFragment_to_MovieFragment"
             app:destination="@id/movie_fragment"
             app:enterAnim="@anim/anim_open_fragment"
-            app:popExitAnim="@anim/anim_close_fragment" />
+            app:popExitAnim="@anim/anim_close_fragment"
+            app:popUpToInclusive="false" />
     </fragment>
+
     <fragment
         android:id="@+id/movie_fragment"
         android:name="com.kinofilms.ui.movie.MovieFragment"
         android:label="MovieFragment"
         tools:layout="@layout/fragment_movie">
         <action
-            android:id="@+id/action_MovieFragment_to_PageFragment"
-            app:destination="@id/page_fragment" />
-        <action
             android:id="@+id/action_MovieFragment_to_ListActorsFragment"
             app:destination="@id/list_actors_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
+        <action
+            android:id="@+id/action_MovieFragment_to_PersonFragment"
+            app:destination="@id/person_fragment"
             app:enterAnim="@anim/anim_open_fragment"
             app:popExitAnim="@anim/anim_close_fragment" />
         <action
@@ -38,30 +42,65 @@
             android:name="id_movie"
             app:argType="string" />
     </fragment>
+
+    <fragment
+        android:id="@+id/person_fragment"
+        android:name="com.kinofilms.ui.person.PersonFragment"
+        android:label="PersonFragment"
+        tools:layout="@layout/fragment_person">
+        <action
+            android:id="@+id/action_PersonFragment_to_FactsFragment"
+            app:destination="@id/facts_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
+        <argument
+            android:name="id_person"
+            app:argType="string" />
+        <argument
+            android:name="name_person"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/facts_fragment"
+        android:name="com.kinofilms.ui.facts.FactsFragment"
+        android:label="FactsFragment"
+        tools:layout="@layout/fragment_facts">
+        <argument
+            android:name="id_person"
+            app:argType="string" />
+    </fragment>
+
     <fragment
         android:id="@+id/list_actors_fragment"
         android:name="com.kinofilms.ui.listpersons.ListActorsFragment"
         android:label="ListActorsFragment"
         tools:layout="@layout/fragment_list_actors">
         <action
-            android:id="@+id/action_ListActorsFragment_to_MovieFragment"
-            app:destination="@id/movie_fragment" />
+            android:id="@+id/action_ListActorsFragment_to_PersonFragment"
+            app:destination="@id/person_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
         <argument
             android:name="id_movie"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/list_film_crew_fragment"
         android:name="com.kinofilms.ui.listpersons.ListFilmCrewFragment"
         android:label="ListFilmCrewFragment"
         tools:layout="@layout/fragment_list_film_crew">
         <action
-            android:id="@+id/action_ListActorsFragment_to_MovieFragment"
-            app:destination="@id/movie_fragment" />
+            android:id="@+id/action_ListFilmCrewFragment_to_PersonFragment"
+            app:destination="@id/person_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
         <argument
             android:name="id_movie"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/recommendations_fragment"
         android:name="com.kinofilms.ui.recommendations.RecommendationsFragment"
@@ -73,11 +112,13 @@
             app:enterAnim="@anim/anim_open_fragment"
             app:popExitAnim="@anim/anim_close_fragment" />
     </fragment>
+
     <fragment
         android:id="@+id/search_fragment"
         android:name="com.kinofilms.ui.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
+
     <fragment
         android:id="@+id/profile_fragment"
         android:name="com.kinofilms.ui.profile.ProfileFragment"
@@ -99,14 +140,12 @@
             app:enterAnim="@anim/anim_open_fragment"
             app:popExitAnim="@anim/anim_close_fragment" />
     </fragment>
+
     <fragment
         android:id="@+id/favorite_movies_fragment"
         android:name="com.kinofilms.ui.favoritemovies.FavoriteMoviesFragment"
         android:label="FavoriteMoviesFragment"
         tools:layout="@layout/fragment_favorite_movies">
-        <action
-            android:id="@+id/action_FavoriteMoviesFragment_to_ProfileFragment"
-            app:destination="@id/profile_fragment" />
         <action
             android:id="@+id/action_favorite_movies_fragment_to_movie_fragment"
             app:destination="@id/movie_fragment"
@@ -116,14 +155,12 @@
             android:name="id_movie"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/favorite_serials_fragment"
         android:name="com.kinofilms.ui.favoritemovies.FavoriteSerialsFragment"
         android:label="FavoriteSerialsFragment"
         tools:layout="@layout/fragment_favorite_serials">
-        <action
-            android:id="@+id/action_FavoriteSerialsFragment_to_ProfileFragment"
-            app:destination="@id/profile_fragment" />
         <action
             android:id="@+id/action_FavoriteSerialsFragment_to_MovieFragment"
             app:destination="@id/movie_fragment"
@@ -133,14 +170,12 @@
             android:name="id_movie"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/favorite_cartoons_fragment"
         android:name="com.kinofilms.ui.favoritemovies.FavoriteCartoonsFragment"
         android:label="FavoriteCartoonsFragment"
         tools:layout="@layout/fragment_favorite_cartoons">
-        <action
-            android:id="@+id/action_FavoriteCartoonsFragment_to_ProfileFragment"
-            app:destination="@id/profile_fragment" />
         <action
             android:id="@+id/action_FavoriteCartoonsFragment_to_MovieFragment"
             app:destination="@id/movie_fragment"

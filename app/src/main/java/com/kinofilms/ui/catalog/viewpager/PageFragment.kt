@@ -10,7 +10,7 @@ import com.kinofilms.R
 import com.kinofilms.databinding.FragmentPageBinding
 import com.kinofilms.ui.catalog.FragmentType.*
 
-class PageFragment : Fragment()  {
+class PageFragment : Fragment() {
 
     private lateinit var binding: FragmentPageBinding
 

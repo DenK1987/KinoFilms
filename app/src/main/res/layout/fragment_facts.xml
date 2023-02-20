@@ -26,46 +26,20 @@
             android:layout_height="@dimen/dp_0">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/list_film_crew"
+                android:id="@+id/list_facts"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_0"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="6"
-                tools:listitem="@layout/item_person_profession" />
+                tools:itemCount="10"
+                tools:listitem="@layout/item_fact" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <FrameLayout
-        android:id="@+id/layout_progress"
-        android:layout_width="@dimen/dp_0"
-        android:layout_height="@dimen/dp_0"
-        android:background="@color/color_app_bottom_toolbar"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_custom">
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminateTint="@color/color_app_blue" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/dp_60"
-            android:text="@string/please_wait"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_16" />
-
-    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

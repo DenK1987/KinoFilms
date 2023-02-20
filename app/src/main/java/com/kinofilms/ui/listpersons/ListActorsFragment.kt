@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.kinofilms.R
 import com.kinofilms.databinding.FragmentListActorsBinding
 import com.kinofilms.models.Person
@@ -44,10 +47,14 @@ class ListActorsFragment : Fragment() {
             toolbarTitle.text = getString(R.string.actors)
         }
 
+        viewModel.state.observe(viewLifecycleOwner) { state ->
+            binding.layoutProgress.isVisible = state
+        }
+
         viewModel.listActors.observe(viewLifecycleOwner) { list ->
-            setListActors(list.actors.filter {
+            initList(list.actors.filter {
                 it.enProfession == getString(R.string.profession_actor)
-            })
+            }, binding.listActors)
         }
         viewModel.getListActors(args.idMovie.toInt())
 
@@ -55,32 +62,26 @@ class ListActorsFragment : Fragment() {
             if (list.actors.any {
                     it.enProfession == getString(R.string.profession_voice_actor)
                 }) {
-                setListVoiceActors(list.actors.filter {
+                initList(list.actors.filter {
                     it.enProfession == getString(R.string.profession_voice_actor)
-                })
+                }, binding.listVoiceActors)
             } else binding.voiceActors.visibility = View.GONE
         }
         viewModel.getListVoiceActors(args.idMovie.toInt())
-
-
     }
 
-    private fun setListActors(list: List<Person>) {
-        binding.listActors.run {
+    private fun initList(list: List<Person>, view: RecyclerView) {
+        view.run {
             if (adapter == null) {
-                adapter = PersonsByProfessionAdapter()
+                adapter = PersonsByProfessionAdapter {
+                    findNavController().navigate(
+                        ListActorsFragmentDirections.actionListActorsFragmentToPersonFragment(
+                            it.id.toString(),
+                            it.name
+                        )
+                    )
+                }
                 layoutManager = LinearLayoutManager(requireContext())
-            }
-            (adapter as? PersonsByProfessionAdapter)?.submitList(list)
-        }
-    }
-
-    private fun setListVoiceActors(list: List<Person>) {
-        binding.listVoiceActors.run {
-            if (adapter == null) {
-                adapter = PersonsByProfessionAdapter()
-                layoutManager =
-                    LinearLayoutManager(requireContext())
             }
             (adapter as? PersonsByProfessionAdapter)?.submitList(list)
         }

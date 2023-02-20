@@ -22,20 +22,23 @@ class MovieViewModel @Inject constructor(
     private val _movie = MutableLiveData<Movie>()
     val movie: LiveData<Movie> = _movie
 
+    private val _state = MutableLiveData<Boolean>()
+    val state: LiveData<Boolean> = _state
+
     private val isFavoriteMovie = MutableLiveData(false)
 
     fun getInfoMovie(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-//            Log.e("KEK", "MovieViewModel $id")
+            _state.postValue(true)
             val response = repository.getMovie(id)
             if (response.isSuccessful) {
                 _movie.postValue((response.body()?.toMovie()))
+                _state.postValue(false)
             } else {
                 response.errorBody()
             }
         }
     }
-
 
     private fun addFavoriteMovie(movie: Movie) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -64,5 +67,4 @@ class MovieViewModel @Inject constructor(
         }
         isFavoriteMovie.value = !(isFavoriteMovie.value ?: true)
     }
-
 }

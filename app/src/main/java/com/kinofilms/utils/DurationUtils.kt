@@ -11,5 +11,4 @@ fun transformDurationMovie(durationInMinutes: Int): String {
 
     return if (desiredHours != 0) "$desiredHours ${"ч."} $desiredMinutes ${"мин."}"
     else "$desiredMinutes ${"мин."}"
-
 }
