@@ -59,17 +59,29 @@ class PersonFragment : Fragment() {
                 enNamePerson.text = person.enName
                 photoPerson.loadUrl(person.photo)
                 profession.text = person.profession.string()
-//                birthday.text = person.birthday.replace("T00:00:00.000Z", "")
-////                age.text = "${person.age} ${getString(R.string.years)}"
-//                age.text = resources.getQuantityString(R.plurals.plurals_age, person.age, person.age)
-//                growth.text = transformGrowthPerson(person.growth)
-                initListFacts(person.facts)
-                buttonFacts.text = person.facts.size.toString()
+                if (person.facts.isNotEmpty()) {
+                    initListFacts(person.facts)
+                    buttonFacts.text = person.facts.size.toString()
+                } else {
+                    listFacts.isVisible = false
+                    facts.isVisible = false
+                    buttonFacts.isVisible = false
+                }
+
             }
         }
         viewModel.getInfoPerson(args.idPerson.toInt())
 
         binding.apply {
+            buttonMoreDetailed.setOnClickListener {
+                findNavController().navigate(
+                    PersonFragmentDirections.actionPersonFragmentToDetailedInfoPersonFragment(
+                        args.idPerson,
+                        args.namePerson
+                    )
+                )
+            }
+
             facts.setOnClickListener {
                 findNavController().navigate(
                     PersonFragmentDirections.actionPersonFragmentToFactsFragment(

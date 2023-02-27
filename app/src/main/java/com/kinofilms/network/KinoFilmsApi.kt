@@ -9,12 +9,6 @@ import retrofit2.http.Query
 
 interface KinoFilmsApi {
 
-//    @GET("/movie?field=typeNumber&search=1&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
-//    suspend fun getAllMovies(
-//        @Query("page") page: Int,
-//        @Query("limit") limit: Int? = 50               // limit=820854
-//    ): Response<AllMoviesCatalogResponse>
-
     @GET("/movie?field=typeNumber&search=1&limit=100&token=4A9G25B-SDCM3VY-G9AX8G2-J5CQTV2")
     suspend fun getAllMovies(): Response<AllMoviesCatalogResponse>
 

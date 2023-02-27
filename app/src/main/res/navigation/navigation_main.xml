@@ -53,6 +53,11 @@
             app:destination="@id/facts_fragment"
             app:enterAnim="@anim/anim_open_fragment"
             app:popExitAnim="@anim/anim_close_fragment" />
+        <action
+            android:id="@+id/action_PersonFragment_to_DetailedInfoPersonFragment"
+            app:destination="@id/detailed_info_person_fragment"
+            app:enterAnim="@anim/anim_open_fragment"
+            app:popExitAnim="@anim/anim_close_fragment" />
         <argument
             android:name="id_person"
             app:argType="string" />
@@ -68,6 +73,19 @@
         tools:layout="@layout/fragment_facts">
         <argument
             android:name="id_person"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailed_info_person_fragment"
+        android:name="com.kinofilms.ui.person.detailedinfo.DetailedInfoPersonFragment"
+        android:label="DetailedInfoPersonFragment"
+        tools:layout="@layout/fragment_detailed_info_person">
+        <argument
+            android:name="id_person"
+            app:argType="string" />
+        <argument
+            android:name="name_person"
             app:argType="string" />
     </fragment>
 

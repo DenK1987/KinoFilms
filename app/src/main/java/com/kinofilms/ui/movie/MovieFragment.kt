@@ -21,6 +21,7 @@ import com.kinofilms.ui.movie.actorsadapter.ActorsAdapter
 import com.kinofilms.ui.movie.filmcrewadapter.FilmCrewAdapter
 import com.kinofilms.utils.loadUrl
 import com.kinofilms.utils.string
+import com.kinofilms.utils.transformDateInString
 import com.kinofilms.utils.transformDurationMovie
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -171,15 +172,13 @@ class MovieFragment : Fragment() {
                 genreMovie.text = movie.genres.string()
                     .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }
                 if (movie.worldPremiere.isNotEmpty()) {
-                    datePremiereInWorld.text =
-                        movie.worldPremiere.replaceAfter("T", "").trim('T')
+                    datePremiereInWorld.text = transformDateInString(movie.worldPremiere)
                 } else {
                     premiereInWorld.visibility = View.GONE
                     datePremiereInWorld.visibility = View.GONE
                 }
                 if (movie.premiereInRussia.isNotEmpty()) {
-                    datePremiereInRussia.text =
-                        movie.premiereInRussia.replaceAfter("T", "").trim('T')
+                    datePremiereInRussia.text = transformDateInString(movie.premiereInRussia)
                 } else {
                     premiereInRussia.visibility = View.GONE
                     datePremiereInRussia.visibility = View.GONE
